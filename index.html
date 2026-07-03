@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <title>Adna Cosmetics – Kozmetični salon Vrhnika</title>
+    <meta name="description" content="Manikura, pedikura, lash lift in laminacija obrvi, depilacija ter masaža na Vrhniki. Rezerviraj termin v salonu Adna Cosmetics!" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
+    <link rel="preload" as="image" href="/backgroundimage.webp" type="image/webp"
+          fetchpriority="high" media="(min-width: 768px)" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.adnacosmetics.si/#website",
+          "url": "https://www.adnacosmetics.si",
+          "name": "Adna Cosmetics",
+          "inLanguage": "sl-SI",
+          "publisher": { "@id": "https://www.adnacosmetics.si/#business" }
+        },
+        {
+          "@type": "BeautySalon",
+          "@id": "https://www.adnacosmetics.si/#business",
+          "name": "Adna Cosmetics",
+          "description": "Kozmetični salon na Vrhniki. Manikura, pedikura, lash lift in laminacija obrvi, depilacija z voskom ter masaža. Delo poteka izključno po naročilu (po dogovoru).",
+          "url": "https://www.adnacosmetics.si",
+          "image": "https://www.adnacosmetics.si/backgroundimage.webp",
+          "logo": "https://www.adnacosmetics.si/logo.webp",
+          "email": "adnaacosmetics@gmail.com",
+          "priceRange": "€€",
+          "currenciesAccepted": "EUR",
+          "knowsLanguage": "sl",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vrhnika",
+            "postalCode": "1360",
+            "addressRegion": "Osrednjeslovenska",
+            "addressCountry": "SI"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 46.0569,
+            "longitude": 14.2956
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Vrhnika" },
+            { "@type": "City", "name": "Ljubljana" },
+            { "@type": "City", "name": "Logatec" },
+            { "@type": "City", "name": "Borovnica" },
+            { "@type": "City", "name": "Brezovica" }
+          ],
+          "founder": { "@type": "Person", "name": "Adna", "jobTitle": "Kozmetičarka" },
+          "sameAs": ["https://www.instagram.com/adnaa_cosmetics"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Storitve salona Adna Cosmetics",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 25, "maxPrice": 45, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Manikura", "description": "Osnovna manikura, permanentno lakiranje ter podaljševanje nohtov (gel)." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 35, "maxPrice": 45, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Pedikura", "description": "Estetska pedikura, pedikura s trajnim lakiranjem in francosko poslikavo." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 35, "maxPrice": 70, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Lash lift in laminacija obrvi", "description": "Vihanje trepalnic (lash lift) in laminacija obrvi, po želji z barvanjem." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 10, "maxPrice": 30, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Depilacija z voskom", "description": "Depilacija z voskom za noge, roke, pazduhe in obraz." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 20, "maxPrice": 40, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Masaža", "description": "Klasična masaža telesa (60 min) in masaža zgornjega hrbta z vratom (30 min)." }
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
