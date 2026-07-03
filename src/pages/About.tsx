@@ -10,10 +10,10 @@ export function About() {
       />
       <div className="pt-24 pb-16 bg-brand-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">O meni</h1>
-          <p className="max-w-2xl mx-auto text-brand-dark/70 text-lg">
+          <p className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">O meni</p>
+          <h1 className="font-sans font-normal max-w-2xl mx-auto text-brand-dark/70 text-lg">
             Spoznaj zgodbo salona Adna Cosmetics in več kot 5 let izkušenj na področju lepotne nege na Vrhniki.
-          </p>
+          </h1>
         </div>
       </div>
 
@@ -35,6 +35,8 @@ export function About() {
               <div className="relative bg-brand-dark/5 overflow-hidden border border-brand-rose group">
                 <img
                   src="/profilna-slika.webp"
+                  srcSet="/profilna-slika-800.webp 800w, /profilna-slika.webp 1067w"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   alt="Adna, ustanoviteljica salona Adna Cosmetics na Vrhniki"
                   width={1067}
                   height={1600}

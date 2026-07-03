@@ -22,11 +22,11 @@ const faqs = [
   },
   {
     q: 'Koliko stane manikura na Vrhniki?',
-    a: 'Osnovna manikura v salonu Adna Cosmetics stane 25 €, podaljševanje nohtov od 35 do 45 €, permanentno (trajno) lakiranje pa 30 €.',
+    a: 'Osnovna manikura v salonu Adna Cosmetics stane 25 €, podaljševanje nohtov od 35 do 45 €, permanentno (trajno) lakiranje pa 30 €.',
   },
   {
     q: 'Kje lahko na Vrhniki naredim lash lift ali laminacijo obrvi?',
-    a: 'Lash lift in laminacijo obrvi izvajam v salonu Adna Cosmetics na Vrhniki. Lash lift stane 35 €, laminacija obrvi 35 €, kombinacija obojega (duo) pa 60 €.',
+    a: 'Lash lift in laminacijo obrvi izvajam v salonu Adna Cosmetics na Vrhniki. Lash lift stane 35 €, laminacija obrvi 35 €, kombinacija obojega (duo) pa 60 €.',
   },
   {
     q: 'Kako se naročim v salon Adna Cosmetics?',
@@ -46,11 +46,11 @@ const faqs = [
   },
   {
     q: 'Ali je za obisk potrebna rezervacija?',
-    a: 'Da, delam izključno po naročilu. Ob odpovedi manj kot 24 ur pred terminom se zaračuna 100 % vrednosti storitve, pri odpovedi 24–48 ur prej pa 50 %.',
+    a: 'Da, delam izključno po naročilu. Ob odpovedi manj kot 24 ur pred terminom se zaračuna 100 % vrednosti storitve, pri odpovedi 24–48 ur prej pa 50 %.',
   },
   {
     q: 'Koliko traja in stane masaža?',
-    a: 'Klasična masaža telesa traja 60 minut in stane 40 €. Krajša masaža zgornjega hrbta z vratom traja 30 minut in stane 20 €.',
+    a: 'Klasična masaža telesa traja 60 minut in stane 40 €. Krajša masaža zgornjega hrbta z vratom traja 30 minut in stane 20 €.',
   },
 ];
 
@@ -168,6 +168,8 @@ export function Home() {
             <div className="absolute inset-0 bg-brand-dark/5 rounded-t-full overflow-hidden group">
               <img
                 src="/salon-osebje.webp"
+                srcSet="/salon-osebje-800.webp 800w, /salon-osebje.webp 1067w"
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 alt="Adna, ustanoviteljica salona Adna Cosmetics na Vrhniki"
                 width={1067}
                 height={1600}
@@ -230,7 +232,7 @@ export function Home() {
             ].map((service, index) => (
               <div key={index} className="bg-white p-8 group border border-brand-nude/50 hover:border-brand-taupe transition-colors">
                 <div className={`mb-6 ${service.title === 'Pedikura' ? 'w-[54px] h-[54px]' : 'w-16 h-16'}`}>
-                  <img src={service.icon} alt={service.title} width={160} height={160} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                  <img src={service.icon} alt="" width={160} height={160} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-serif mb-3">{service.title}</h3>
                 <p className="text-brand-dark/70 text-sm mb-6 leading-relaxed">
@@ -295,7 +297,7 @@ export function Home() {
                         </div>
                         <div>
                           <p className="font-semibold text-brand-dark">{review.name}</p>
-                          <p className="text-xs text-brand-dark/60">{review.city}</p>
+                          <p className="text-xs text-brand-dark/70">{review.city}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -361,7 +363,7 @@ export function Home() {
                     </div>
                     <div>
                       <p className="font-semibold text-brand-dark">{review.name}</p>
-                      <p className="text-xs text-brand-dark/60">{review.city}</p>
+                      <p className="text-xs text-brand-dark/70">{review.city}</p>
                     </div>
                   </div>
                 </div>

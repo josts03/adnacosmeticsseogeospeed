@@ -49,6 +49,15 @@ const servicesList = [
   }
 ];
 
+// srcset iz obstoječih variant: -800 za mobilne, -1200 (če obstaja) in polna širina
+function srcSetFor(src: string, width: number) {
+  const base = src.replace('.webp', '');
+  const parts = [`${base}-800.webp 800w`];
+  if (width > 1300) parts.push(`${base}-1200.webp 1200w`);
+  parts.push(`${src} ${width}w`);
+  return parts.join(', ');
+}
+
 export function Services() {
   const location = useLocation();
 
@@ -70,10 +79,10 @@ export function Services() {
       />
       <div className="pt-24 pb-16 bg-brand-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">Kozmetične storitve</h1>
-          <p className="max-w-2xl mx-auto text-brand-dark/70 text-lg">
+          <p className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">Kozmetične storitve</p>
+          <h1 className="font-sans font-normal max-w-2xl mx-auto text-brand-dark/70 text-lg">
             Manikura, pedikura, lash lift in laminacija obrvi, depilacija ter masaža v kozmetičnem salonu Adna Cosmetics na Vrhniki.
-          </p>
+          </h1>
         </div>
       </div>
 
@@ -90,6 +99,8 @@ export function Services() {
                    {service.image ? (
                      <img
                        src={service.image}
+                       srcSet={srcSetFor(service.image, service.width)}
+                       sizes="(min-width: 1024px) 50vw, 100vw"
                        alt={`${service.title} v kozmetičnem salonu Adna Cosmetics Vrhnika`}
                        width={service.width}
                        height={service.height}

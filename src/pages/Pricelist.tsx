@@ -53,10 +53,10 @@ export function Pricelist() {
       />
       <div className="pt-24 pb-16 bg-brand-light">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">Cenik storitev</h1>
-          <p className="text-brand-dark/70 text-lg">
+          <p className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">Cenik storitev</p>
+          <h1 className="font-sans font-normal text-brand-dark/70 text-lg">
             Transparenten cenik manikure, pedikure, lash lifta, depilacije in masaže v salonu Adna Cosmetics na Vrhniki.
-          </p>
+          </h1>
         </div>
       </div>
 

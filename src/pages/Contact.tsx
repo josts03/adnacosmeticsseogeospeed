@@ -57,10 +57,10 @@ export function Contact() {
       />
       <div className="pt-24 pb-16 bg-brand-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">Kontakt</h1>
-          <p className="max-w-2xl mx-auto text-brand-dark/70 text-lg">
+          <p className="text-5xl md:text-6xl font-serif text-brand-dark mb-6">Kontakt</p>
+          <h1 className="font-sans font-normal max-w-2xl mx-auto text-brand-dark/70 text-lg">
             Stopi v stik ali rezerviraj svoj termin v kozmetičnem salonu na Vrhniki.
-          </p>
+          </h1>
         </div>
       </div>
 
