@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --color-brand-nude-1: #F2E5D9;
+  --color-brand-nude-2: #EFDCCC;
+  --color-brand-nude-3: #E9D3C0;
+  --color-brand-nude-4: #DBC2AD;
+  --color-brand-nude-5: #8A6A52;
+
+  --color-brand-light: #FCFAF8;
+  --color-brand-nude: #F2E5D9;
+  --color-brand-rose: #EFDCCC;
+  --color-brand-taupe: #8A6A52;
+  --color-brand-medium: #DBC2AD;
+  --color-brand-dark: #3B2E25;
+  --color-brand-black: #000000;
+
+  --animate-fade-in: fade-in 0.4s ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  @apply text-brand-dark bg-brand-light font-sans antialiased;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+/* FAQ accordion: chevron se obrne, ko je vprašanje odprto */
+details[open] .faq-chevron {
+  transform: rotate(180deg);
+}
