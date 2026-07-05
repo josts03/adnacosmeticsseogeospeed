@@ -92,7 +92,7 @@ export function Home() {
   return (
     <>
       <SEO
-        title="Adna Cosmetics – Kozmetični salon Vrhnika"
+        title="Adna Cosmetics – Kozmetični salon Vrhnika | Manikura"
         description="Manikura, pedikura, lash lift in laminacija obrvi, depilacija ter masaža na Vrhniki. Rezerviraj termin v salonu Adna Cosmetics!"
         path="/"
         schema={faqSchema}
@@ -282,12 +282,11 @@ export function Home() {
                       }}
                       className="w-full shrink-0 p-6 sm:p-8 border border-brand-nude/50 flex flex-col items-start bg-brand-light/30 rounded-sm cursor-grab active:cursor-grabbing"
                     >
-                      <div className="flex space-x-1 mb-6" aria-hidden="true">
+                      <div className="flex space-x-1 mb-6" role="img" aria-label={`Ocena ${review.stars} od 5`}>
                         {Array.from({ length: 5 }).map((_, j) => (
                            <Star key={j} className={`w-[18px] h-[18px] ${j < review.stars ? 'text-[#D4AF37] fill-[#D4AF37]' : 'text-gray-300 fill-gray-300'}`} />
                         ))}
                       </div>
-                      <p className="sr-only">Ocena: {review.stars} od 5 zvezdic</p>
                       <p className="text-brand-dark/80 italic mb-8 flex-grow leading-relaxed min-h-[160px] text-sm sm:text-base">
                         "{review.text}"
                       </p>
@@ -348,12 +347,11 @@ export function Home() {
                   key={`${review.name}-${i}`}
                   className="w-[300px] md:w-[400px] shrink-0 p-8 border border-brand-nude/50 flex flex-col items-start bg-brand-light/30 rounded-sm"
                 >
-                  <div className="flex space-x-1 mb-6" aria-hidden="true">
+                  <div className="flex space-x-1 mb-6" role="img" aria-label={`Ocena ${review.stars} od 5`}>
                     {Array.from({ length: 5 }).map((_, j) => (
                        <Star key={j} className={`w-[18px] h-[18px] ${j < review.stars ? 'text-[#D4AF37] fill-[#D4AF37]' : 'text-gray-300 fill-gray-300'}`} />
                     ))}
                   </div>
-                  <p className="sr-only">Ocena: {review.stars} od 5 zvezdic</p>
                   <p className="text-brand-dark/80 italic mb-8 flex-grow leading-relaxed">
                     "{review.text}"
                   </p>

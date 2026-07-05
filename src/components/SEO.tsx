@@ -18,6 +18,8 @@ export function SEO({ title, description, path, noindex = false, schema }: SEOPr
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      <link rel="alternate" hrefLang="sl" href={url} />
+      <link rel="alternate" hrefLang="x-default" href={url} />
       <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
 
       <meta property="og:title" content={title} />
