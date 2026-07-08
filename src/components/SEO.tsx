@@ -1,5 +1,3 @@
-import { Helmet } from 'react-helmet-async';
-
 interface SEOProps {
   title: string;
   description: string;
@@ -9,12 +7,17 @@ interface SEOProps {
   schema?: object | object[];
 }
 
+/**
+ * React 19 native document metadata: <title>, <meta> in <link> se samodejno
+ * hoistajo v <head> (na klientu in pri SSR/prerenderingu jih skripta
+ * scripts/prerender.mjs prestavi v <head> statičnega HTML-ja).
+ */
 export function SEO({ title, description, path, noindex = false, schema }: SEOProps) {
   const siteUrl = "https://www.adnacosmetics.si";
   const url = `${siteUrl}${path}`;
 
   return (
-    <Helmet>
+    <>
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
@@ -36,10 +39,11 @@ export function SEO({ title, description, path, noindex = false, schema }: SEOPr
       <meta name="twitter:image" content={`${siteUrl}/backgroundimage.webp`} />
 
       {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       )}
-    </Helmet>
+    </>
   );
 }

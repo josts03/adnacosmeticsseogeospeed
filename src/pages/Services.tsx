@@ -1,6 +1,15 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
+
+const detailPages: Record<string, string> = {
+  manikura: '/manikura-vrhnika',
+  pedikura: '/pedikura-vrhnika',
+  'lash-lift-in-obrvi': '/lash-lift-laminacija-obrvi-vrhnika',
+  depilacija: '/depilacija-vrhnika',
+  masaza: '/masaza-vrhnika',
+};
 
 const servicesList = [
   {
@@ -122,6 +131,14 @@ export function Services() {
                   <p className="text-brand-dark/70 text-lg leading-relaxed mb-8">
                     {service.description}
                   </p>
+                  {detailPages[service.id] && (
+                    <Link
+                      to={detailPages[service.id]}
+                      className="inline-flex items-center text-sm font-semibold text-brand-taupe hover:text-brand-dark transition-colors uppercase tracking-widest"
+                    >
+                      Cene in pogosta vprašanja <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}

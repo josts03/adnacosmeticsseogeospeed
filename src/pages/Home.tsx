@@ -203,36 +203,36 @@ export function Home() {
                 title: 'Manikura',
                 desc: 'Brezhibno urejene roke, ki naredijo vtis. Gel, trajni lak in podaljševanje za nohte, ki trajajo.',
                 icon: '/manikura.webp',
-                link: '/storitve#manikura'
+                link: '/manikura-vrhnika'
               },
               {
                 title: 'Pedikura',
                 desc: 'Mehke, negovane noge vse leto. Profesionalna pedikura za popolno urejena stopala.',
                 icon: '/pedikura.webp',
-                link: '/storitve#pedikura'
+                link: '/pedikura-vrhnika'
               },
               {
                 title: 'Lash lift in laminacija obrvi',
                 desc: 'Oblikovanje, laminacija in lash lift, ki traja tedne. Zbudi se urejena.',
                 icon: '/lash-lift.webp',
-                link: '/storitve#lash-lift-in-obrvi'
+                link: '/lash-lift-laminacija-obrvi-vrhnika'
               },
               {
                 title: 'Depilacija',
                 desc: 'Do 4 tedne gladke kože brez britja. Učinkovito voskanje za vse tipe kože.',
                 icon: '/depilacija.webp',
-                link: '/storitve#depilacija'
+                link: '/depilacija-vrhnika'
               },
               {
                 title: 'Masaža',
                 desc: '60-minutna masaža, ki odpravi napetost v hrbtu in ramenih.',
                 icon: '/masaza.webp',
-                link: '/storitve#masaza'
+                link: '/masaza-vrhnika'
               }
             ].map((service, index) => (
               <div key={index} className="bg-white p-8 group border border-brand-nude/50 hover:border-brand-taupe transition-colors">
                 <div className={`mb-6 ${service.title === 'Pedikura' ? 'w-[54px] h-[54px]' : 'w-16 h-16'}`}>
-                  <img src={service.icon} alt="" width={160} height={160} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                  <img src={service.icon} alt={`${service.title} – Adna Cosmetics Vrhnika`} width={160} height={160} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-serif mb-3">{service.title}</h3>
                 <p className="text-brand-dark/70 text-sm mb-6 leading-relaxed">

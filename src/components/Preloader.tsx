@@ -2,11 +2,21 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const TITLE = "ADNA COSMETICS";
-const isFirstVisit = !sessionStorage.getItem("adna_visited");
-sessionStorage.setItem("adna_visited", "1");
+// SSR-varno: sessionStorage obstaja samo v brskalniku (pri prerenderingu ga ni).
+const isFirstVisit =
+  typeof window !== "undefined" && !sessionStorage.getItem("adna_visited");
+if (typeof window !== "undefined") {
+  sessionStorage.setItem("adna_visited", "1");
+}
 
 export default function Preloader() {
-  const [show, setShow] = useState(isFirstVisit);
+  // Začnemo z `false` (enako kot prerenderiran HTML), da se hidracija ujema;
+  // preloader vklopimo takoj po mountu.
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (isFirstVisit) setShow(true);
+  }, []);
 
   useEffect(() => {
     if (!show) return;

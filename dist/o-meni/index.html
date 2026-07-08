@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="100x100" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
+    <link rel="preload" as="image" href="/backgroundimage.webp" type="image/webp"
+          fetchpriority="high" media="(min-width: 768px)" />
+
+    <!-- TODO: zamenjaj G-XXXXXXXXXX s pravim GA4 measurement ID in ODKOMENTIRAJ blok spodaj.
+         POZOR: pred aktivacijo posodobi politiko zasebnosti in cookie banner —
+         trenutni banner izrecno pravi, da stran NE uporablja analitičnih piškotkov,
+         GA4 pa jih nastavi. Potreben je consent pred nalaganjem (GDPR).
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.adnacosmetics.si/#website",
+          "url": "https://www.adnacosmetics.si",
+          "name": "Adna Cosmetics",
+          "inLanguage": "sl-SI",
+          "publisher": { "@id": "https://www.adnacosmetics.si/#business" }
+        },
+        {
+          "@type": "BeautySalon",
+          "@id": "https://www.adnacosmetics.si/#business",
+          "name": "Adna Cosmetics",
+          "description": "Kozmetični salon na Vrhniki. Manikura, pedikura, lash lift in laminacija obrvi, depilacija z voskom ter masaža. Delo poteka izključno po naročilu (po dogovoru).",
+          "url": "https://www.adnacosmetics.si",
+          "image": "https://www.adnacosmetics.si/backgroundimage.webp",
+          "logo": "https://www.adnacosmetics.si/logo.webp",
+          "email": "adnaacosmetics@gmail.com",
+          "priceRange": "€€",
+          "currenciesAccepted": "EUR",
+          "knowsLanguage": "sl",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vrhnika",
+            "postalCode": "1360",
+            "addressRegion": "Osrednjeslovenska",
+            "addressCountry": "SI"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 46.0569,
+            "longitude": 14.2956
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Vrhnika" },
+            { "@type": "City", "name": "Ljubljana" },
+            { "@type": "City", "name": "Logatec" },
+            { "@type": "City", "name": "Borovnica" },
+            { "@type": "City", "name": "Brezovica" }
+          ],
+          "founder": { "@type": "Person", "name": "Adna", "jobTitle": "Kozmetičarka" },
+          "sameAs": ["https://www.instagram.com/adnaa_cosmetics"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Storitve salona Adna Cosmetics",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 25, "maxPrice": 45, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Manikura", "url": "https://www.adnacosmetics.si/manikura-vrhnika", "description": "Osnovna manikura, permanentno lakiranje ter podaljševanje nohtov (gel)." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 35, "maxPrice": 45, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Pedikura", "url": "https://www.adnacosmetics.si/pedikura-vrhnika", "description": "Estetska pedikura, pedikura s trajnim lakiranjem in francosko poslikavo." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 35, "maxPrice": 70, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Lash lift in laminacija obrvi", "url": "https://www.adnacosmetics.si/lash-lift-laminacija-obrvi-vrhnika", "description": "Vihanje trepalnic (lash lift) in laminacija obrvi, po želji z barvanjem." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 10, "maxPrice": 30, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Depilacija z voskom", "url": "https://www.adnacosmetics.si/depilacija-vrhnika", "description": "Depilacija z voskom za noge, roke, pazduhe in obraz." }
+              },
+              {
+                "@type": "Offer",
+                "priceCurrency": "EUR",
+                "priceSpecification": { "@type": "PriceSpecification", "minPrice": 20, "maxPrice": 40, "priceCurrency": "EUR" },
+                "itemOffered": { "@type": "Service", "name": "Masaža", "url": "https://www.adnacosmetics.si/masaza-vrhnika", "description": "Klasična masaža telesa (60 min) in masaža zgornjega hrbta z vratom (30 min)." }
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BQ9Iwq1C.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bq-k7OBz.css">
+      <title>O salonu | Adna Cosmetics Vrhnika</title>
+    <meta name="description" content="Spoznaj zgodbo salona Adna Cosmetics in več kot 5 let izkušenj na področju profesionalne lepotne nege na Vrhniki."/>
+    <link rel="canonical" href="https://www.adnacosmetics.si/o-meni"/>
+    <link rel="alternate" hrefLang="sl" href="https://www.adnacosmetics.si/o-meni"/>
+    <link rel="alternate" hrefLang="x-default" href="https://www.adnacosmetics.si/o-meni"/>
+    <meta name="robots" content="index, follow"/>
+    <meta property="og:title" content="O salonu | Adna Cosmetics Vrhnika"/>
+    <meta property="og:description" content="Spoznaj zgodbo salona Adna Cosmetics in več kot 5 let izkušenj na področju profesionalne lepotne nege na Vrhniki."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://www.adnacosmetics.si/o-meni"/>
+    <meta property="og:locale" content="sl_SI"/>
+    <meta property="og:site_name" content="Adna Cosmetics"/>
+    <meta property="og:image" content="https://www.adnacosmetics.si/backgroundimage.webp"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="O salonu | Adna Cosmetics Vrhnika"/>
+    <meta name="twitter:description" content="Spoznaj zgodbo salona Adna Cosmetics in več kot 5 let izkušenj na področju profesionalne lepotne nege na Vrhniki."/>
+    <meta name="twitter:image" content="https://www.adnacosmetics.si/backgroundimage.webp"/>
+  </head>
+  <body>
+    <div id="root"><link rel="preload" as="image" href="/logo.webp"/><div class="flex flex-col min-h-screen"><div class="bg-brand-dark text-brand-light py-2 text-xs md:text-sm"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"><div class="flex items-center space-x-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg><span>Vrhnika</span></div><div class="flex items-center space-x-4"><a href="mailto:adnaacosmetics@gmail.com" class="flex items-center space-x-1 hover:text-brand-nude transition-colors p-2 -m-2" aria-label="Pošlji email na adnaacosmetics@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-4 h-4" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span class="hidden sm:inline">adnaacosmetics@gmail.com</span></a><a href="https://www.instagram.com/adnaa_cosmetics/" target="_blank" rel="noopener noreferrer" class="inline-flex hover:text-brand-nude transition-colors p-2 -m-2" aria-label="Instagram — Adna Cosmetics"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-4 h-4" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a></div></div></div><nav class="sticky top-0 z-50 transition-all duration-300 bg-brand-light py-3 md:py-2"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"><a class="text-brand-dark hover:text-brand-taupe transition-colors" href="/" data-discover="true"><img src="/logo.webp" alt="Logotip Adna Cosmetics – kozmetični salon Vrhnika" width="480" height="319" loading="eager" decoding="async" class="object-contain h-[76px] md:h-24 w-auto"/></a><div class="hidden md:flex space-x-8 items-center"><a class="text-sm uppercase tracking-widest transition-colors hover:text-brand-taupe text-brand-dark/80" href="/" data-discover="true">Domov</a><a class="text-sm uppercase tracking-widest transition-colors hover:text-brand-taupe font-semibold text-brand-taupe border-b border-brand-taupe" href="/o-meni" data-discover="true">O meni</a><a class="text-sm uppercase tracking-widest transition-colors hover:text-brand-taupe text-brand-dark/80" href="/storitve" data-discover="true">Storitve</a><a class="text-sm uppercase tracking-widest transition-colors hover:text-brand-taupe text-brand-dark/80" href="/cenik" data-discover="true">Cenik</a><a class="px-6 py-2 bg-brand-dark text-brand-light text-sm uppercase tracking-widest hover:bg-brand-taupe transition-colors" href="/kontakt" data-discover="true">Naroči se</a></div><button class="md:hidden text-brand-dark p-2 -mr-2" aria-label="Odpri meni" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></nav><main class="flex-grow"><div style="opacity:0;transform:translateY(10px)"><!--$--><div class="pt-24 pb-16 bg-brand-light"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><p class="text-5xl md:text-6xl font-serif text-brand-dark mb-6">O meni</p><h1 class="font-sans font-normal max-w-2xl mx-auto text-brand-dark/70 text-lg">Spoznaj zgodbo salona Adna Cosmetics in več kot 5 let izkušenj na področju lepotne nege na Vrhniki.</h1></div></div><section class="py-16 bg-white"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:grid lg:grid-cols-2 gap-y-12 lg:gap-x-16 lg:gap-y-0 items-start"><div class="lg:col-start-2 lg:row-start-1 w-full"><h2 class="text-4xl font-serif mb-6 lg:mb-8 text-brand-dark">Adna Cosmetics</h2><div class="prose prose-lg text-brand-dark/80 max-w-none"><p class="mb-0 lg:mb-6">Lepo vabljena v moj kotiček lepote! Spoznajva se v okolju, kjer tvoj termin ni le termin ampak čas, ki ga nameniš sama sebi. Zagotovim ti dobro energijo in prijeten pristop. Če ti je neprijetno ob novem spoznavanju, se lahko zmeniva in te počaka tvoj najljubši film ali pa serija. Trudim se, da je vsem strankam pri meni prijetno in udobno, saj je to tisto kar šteje. Se vidiva! :)</p></div></div><div class="w-full static lg:sticky lg:top-32 lg:col-start-1 lg:row-start-1 lg:row-span-2"><div class="relative w-full"><div class="absolute inset-0 bg-brand-nude translate-x-4 translate-y-4"></div><div class="relative bg-brand-dark/5 overflow-hidden border border-brand-rose group"><img src="/profilna-slika.webp" srcSet="/profilna-slika-800.webp 800w, /profilna-slika.webp 1067w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Adna, ustanoviteljica salona Adna Cosmetics na Vrhniki" width="1067" height="1600" loading="lazy" decoding="async" class="w-full h-auto block transition-transform duration-700 group-hover:scale-105"/></div></div></div><div class="lg:col-start-2 lg:row-start-2 w-full"><div class="prose prose-lg text-brand-dark/80 max-w-none"><h3 class="text-2xl font-serif text-brand-dark mt-0 lg:mt-10 mb-4">Kdo sem?</h3><p class="mb-6 leading-relaxed">Ime mi je Adna, že od majhnega me kozmetika in lepota navdušujeta. V srednji šoli me je želja po delu v kozmetiki popolnoma prevzela in opravila sem prva tečaja za manikuro. Bila sem namreč na srednji šoli, ki s kozmetiko ni imela skupne točke, a sem se po zaključku vpisala na Višjo šolo za kozmetiko in velnes v Ljubljani. Med srednjo šolo in izobraževanjem na višji šoli sem delala v različnih salonih in si nabrala izkušnje. Te izkušnje so nekaj, kar nosim s seboj in mi pri vsakdanjem delu vsekakor pridejo prav. V preteklem času sem v ponudbo dodala tudi nekaj novih storitev, a vseeno manikura ostaja moja svetla točka in nekaj, na kar se želim osredotočiti tudi v prihodnosti.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12"><div class="bg-brand-nude/30 p-6"><h4 class="font-serif text-xl mb-3 text-brand-dark">Certifikati</h4><p class="text-brand-dark/70 leading-relaxed">Verjamem v to, da se je v tem poslu potrebno konstantno izobraževati, zato sem se v preteklih letih tudi sama izobraževala in se udeležila več kot 20 izobraževanj. Izobraževanj sem se udeležila tako v Sloveniji kot v tujih državah in se tako učila od najboljših.</p></div><div class="bg-brand-nude/30 p-6"><h4 class="font-serif text-xl mb-3 text-brand-dark">Izkušnje</h4><p class="text-brand-dark/70 leading-relaxed">Na tem področju imam pet let izkušenj. Ta pot mi je omogočila ogromno karierno in osebnostno rast. Vse to mi je prineslo boljše komunikacijske sposobnosti, boljše odnose s strankami, hitrost ter spretnost pri salonskem delu.</p></div></div></div></div></div></section><!--/$--></div></main><footer class="bg-brand-dark text-brand-light py-16"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 text-center sm:text-left [&amp;&gt;div]:min-w-0"><div class="flex flex-col space-y-4 items-center sm:items-start"><a class="text-brand-light hover:text-brand-nude transition-colors mb-2" href="/" data-discover="true"><img src="/logo_white.webp" alt="Logotip Adna Cosmetics – kozmetični salon Vrhnika" width="480" height="319" loading="lazy" decoding="async" class="object-contain h-20 md:h-24 w-auto"/></a><p class="text-brand-nude opacity-80 max-w-sm mx-auto sm:mx-0">Adna Cosmetics, kjer lepota sreča strokovnost in poudarja tvojo unikatnost.</p></div><div class="flex flex-col space-y-4"><p class="font-serif text-xl mb-2">Kontakt</p><p class="flex items-center justify-center sm:justify-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4 text-brand-nude" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg> Vrhnika</p><a href="mailto:adnaacosmetics@gmail.com" class="flex items-center justify-center sm:justify-start gap-2 hover:text-brand-light transition-colors min-w-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-4 h-4 text-brand-nude shrink-0" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg> <span class="break-all">adnaacosmetics@gmail.com</span></a></div><div class="flex flex-col space-y-4"><p class="font-serif text-xl mb-2">Delovni čas</p><div class="text-sm space-y-2"><p class="flex justify-center sm:justify-start gap-2"><span>Pon - Pet:</span> <span class="text-brand-nude">Po dogovoru</span></p><p class="flex justify-center sm:justify-start gap-2"><span>Sob, Ned, prazniki:</span> <span class="text-brand-nude">Zaprto</span></p></div></div><div class="flex flex-col space-y-4"><p class="font-serif text-xl mb-2">Sledi mi</p><div class="flex space-x-4 justify-center sm:justify-start"><a href="https://www.instagram.com/adnaa_cosmetics/" target="_blank" rel="noopener noreferrer" class="p-3 border border-brand-nude/30 rounded-full hover:bg-brand-nude/10 hover:border-brand-nude transition-all" aria-label="Instagram — Adna Cosmetics"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram w-5 h-5 text-brand-nude" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a></div></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-brand-nude/20 text-center text-sm text-brand-nude/60 flex flex-col sm:flex-row justify-between items-center gap-4"><span>© <!-- -->2026<!-- --> Adna Cosmetics. Vse pravice pridržane.</span><div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-6"><a class="hover:text-brand-nude transition-colors py-2" href="/pogoji-poslovanja" data-discover="true">Pogoji poslovanja</a><a class="hover:text-brand-nude transition-colors py-2" href="/politika-zasebnosti" data-discover="true">Politika zasebnosti</a></div></div></footer></div></div>
+  </body>
+</html>
+
