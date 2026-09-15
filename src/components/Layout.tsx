@@ -4,6 +4,7 @@ import { Menu, X, Instagram, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './Logo';
 import { services } from '../data/services';
+import { EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from '../data/site';
 
 interface LayoutProps {
   children: ReactNode;
@@ -210,7 +211,9 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Footer */}
       <footer className="bg-brand-dark text-brand-light py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12 text-center sm:text-left [&>div]:min-w-0">
+        {/* Stolpci niso enako široki: kontakt dobi več prostora, da e-pošta ostane v eni
+            vrstici tudi pri ~1024 px, "Sledi mi" pa potrebuje le širino ikone. */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.45fr_1.1fr_0.55fr] gap-x-8 gap-y-12 text-center sm:text-left [&>div]:min-w-0">
           <div className="flex flex-col space-y-4 items-center sm:items-start">
             <Link to="/" className="text-brand-light hover:text-brand-nude transition-colors mb-2">
               <Logo src="/logo_white.webp" className="h-20 md:h-24 w-auto" loading="lazy" />
@@ -240,12 +243,33 @@ export function Layout({ children }: LayoutProps) {
           
           <div className="flex flex-col space-y-4">
             <p className="font-serif text-xl mb-2">Kontakt</p>
-            <p className="flex items-center justify-center sm:justify-start gap-2">
-              <MapPin className="w-4 h-4 text-brand-nude" /> Vrhnika
-            </p>
-            <a href="mailto:adnaacosmetics@gmail.com" className="flex items-center justify-center sm:justify-start gap-2 hover:text-brand-light transition-colors min-w-0">
-              <Mail className="w-4 h-4 text-brand-nude shrink-0" /> <span className="break-all">adnaacosmetics@gmail.com</span>
-            </a>
+            {/* text-sm in space-y-2 kot pri storitvah in delovnem času; e-pošta in
+                Instagram sta whitespace-nowrap, da nikoli ne prelomita v dve vrstici. */}
+            <div className="text-sm space-y-2">
+              <p className="flex items-center justify-center sm:justify-start gap-2">
+                <MapPin className="w-4 h-4 text-brand-nude shrink-0" /> Vrhnika
+              </p>
+              <p className="flex justify-center sm:justify-start">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex items-center gap-2 hover:text-brand-nude transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-brand-nude shrink-0" />
+                  <span className="whitespace-nowrap">{EMAIL}</span>
+                </a>
+              </p>
+              <p className="flex justify-center sm:justify-start">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-brand-nude transition-colors"
+                >
+                  <Instagram className="w-4 h-4 text-brand-nude shrink-0" />
+                  <span className="whitespace-nowrap">{INSTAGRAM_HANDLE}</span>
+                </a>
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-col space-y-4">
