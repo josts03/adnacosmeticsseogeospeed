@@ -54,9 +54,6 @@ export function ServicePage({ service }: { service: Service }) {
             </a>
           </div>
         </div>
-
-        {/* Na kratko: ključna dejstva (cena, obstojnost, plačilo, kraj, naročanje) */}
-        <QuickFacts service={service} />
       </div>
 
       {/* Podstoritve: izmenični bloki, ločeni s tankimi črtami */}
@@ -121,6 +118,9 @@ export function ServicePage({ service }: { service: Service }) {
       {/* Cenik */}
       <section id="cenik" className="py-24 bg-brand-light scroll-mt-28 md:scroll-mt-36">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Na kratko: zložena ključna dejstva (cena, obstojnost, plačilo, kraj, naročanje) –
+              besedilo je v HTML-ju za Google in AI, stranka ga odpre po želji. */}
+          <QuickFacts service={service} />
           <PriceTable title={labels.prices} items={service.prices} note={service.priceNote} ctaHref={bookingHref} />
           <p className="mt-10 text-center text-sm text-brand-dark/70">
             Celoten cenik vseh storitev najdeš na strani{' '}
