@@ -19,10 +19,12 @@ export const pedikura: Service = {
   iconClassName: 'w-[54px] h-[54px]',
   serviceType: 'Pedikura',
   seo: {
-    title: 'Pedikura Vrhnika – estetska pedikura | Adna Cosmetics',
+    title: 'Pedikura Vrhnika – cenik, estetska pedikura | Adna Cosmetics',
     description:
-      'Estetska pedikura na Vrhniki: urejena obnohtna kožica, oblikovani nohti, trajni lak ali francoska. Od 35 €. Naroči se v salon Adna Cosmetics.',
+      'Estetska pedikura na Vrhniki: urejena kožica, oblikovani nohti, trajni lak ali francoska. Cenik: pedikura 35 €, s trajnim lakom 40 €. Adna Cosmetics.',
   },
+  published: '2026-09-15',
+  modified: '2026-09-16',
   labels: {
     more: 'Več o pedikuri',
     overview: 'Kaj vključuje pedikura?',
@@ -37,6 +39,12 @@ export const pedikura: Service = {
   cardText: 'Mehke, negovane noge vse leto. Profesionalna pedikura za popolno urejena stopala.',
   overview: [
     'Pedikura je izraz, ki označuje urejanje stopal. Stranke, ki se na pedikuro naročijo, si večinoma želijo imeti bolj obstojen lak in bolj natančno nanesen. Jaz z urejanjem obnohtne kožice, krajšanjem in oblikovanjem nohtov poskrbim za bolj lahkoten korak in estetski videz.',
+  ],
+  quickFacts: [
+    { label: 'Cena', value: 'od 35 € (estetska pedikura); s trajnim lakiranjem 40 €, s francosko poslikavo 45 €' },
+    { label: 'Obstojnost', value: 'trajni lak na nogah zdrži več tednov' },
+    { label: 'Priporočen razmik', value: '4–6 tednov' },
+    { label: 'Primerno za', value: 'nego zdravih stopal; pri vraščenih nohtih, glivicah ali sladkorni bolezni svetujem medicinsko pedikuro' },
   ],
   subservices: [
     {
@@ -121,7 +129,7 @@ export const pedikura: Service = {
     { name: 'Pedikura s francosko poslikavo', price: '45 €' },
     { name: 'Odstranjevanje trajnega laka s pedikuro', price: '20 €' },
   ],
-  priceRange: { min: 20, max: 45 },
+  priceRange: { min: 35, max: 45 },
   gallery: [],
   faq: [
     {

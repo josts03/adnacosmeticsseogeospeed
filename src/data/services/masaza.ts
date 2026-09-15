@@ -23,6 +23,8 @@ export const masaza: Service = {
     description:
       'Klasična masaža telesa (60 min, 40 €) in masaža zgornjega hrbta z vratom (30 min, 20 €) na Vrhniki. Sprostitev po dogovoru v salonu Adna Cosmetics.',
   },
+  published: '2026-09-15',
+  modified: '2026-09-15',
   labels: {
     more: 'Več o masaži',
     overview: 'Kaj vključuje masaža?',
@@ -37,6 +39,12 @@ export const masaza: Service = {
   cardText: '60-minutna masaža, ki odpravi napetost v hrbtu in ramenih.',
   overview: [
     'Klasična masaža telesa vključuje masažo hrbta, rok in nog spredaj in zadaj. 1 ura sprostitve v današnjem hitrem življenju bo vsakemu prav prišla. Za tiste, ki nimajo toliko časa pa obstaja masaža zgornjega hrbta in vratu, ta je krajša in traja 30 min, je kot nalašč za hitro sprostitev.',
+  ],
+  quickFacts: [
+    { label: 'Cena', value: '40 € klasična masaža telesa (60 min), 20 € masaža zgornjega hrbta z vratom (30 min)' },
+    { label: 'Trajanje', value: '60 ali 30 minut' },
+    { label: 'Priporočeno', value: '1–2× na mesec za sprostitev in preprečevanje napetosti' },
+    { label: 'Primerno za', value: 'napetost v hrbtu, ramenih in vratu; pritisk prilagodim tvojemu odzivu' },
   ],
   subservices: [
     {

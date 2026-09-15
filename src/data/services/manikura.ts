@@ -21,8 +21,10 @@ export const manikura: Service = {
   seo: {
     title: 'Manikura Vrhnika – gel nohti in trajni lak | Adna Cosmetics',
     description:
-      'Manikura na Vrhniki: gel na naravne nohte, podaljševanje (S/M/L), trajni lak, francoska in poslikave. Cene od 25 €, termini po dogovoru. Adna Cosmetics.',
+      'Manikura in gel nohti na Vrhniki: podaljševanje (S/M/L), trajni lak, francoska in poslikave. Cene od 25 €, termini po dogovoru. Adna Cosmetics.',
   },
+  published: '2026-09-15',
+  modified: '2026-09-16',
   labels: {
     more: 'Več o manikuri',
     overview: 'Kaj vključuje manikura?',
@@ -31,12 +33,18 @@ export const manikura: Service = {
   },
   hero: {
     intro:
-      'Iščeš manikuro na Vrhniki, ki zdrži? V salonu Adna Cosmetics uredim naravne nohte, nanesem permanentni (trajni) lak ali jih podaljšam z gelom, po želji dodam francosko ali poslikavo. Delam po naročilu, z materiali, ki jim zaupam, in s široko paleto barv. K meni prihajajo stranke z Vrhnike, iz Ljubljane, Logatca, Borovnice in Brezovice.',
+      'Iščeš manikuro ali gel nohte na Vrhniki, ki zdržijo? V salonu Adna Cosmetics uredim naravne nohte, nanesem permanentni (trajni) lak ali jih podaljšam z gelom, po želji dodam francosko ali poslikavo. Delam po naročilu, z materiali, ki jim zaupam, in s široko paleto barv. K meni prihajajo stranke z Vrhnike, iz Ljubljane, Logatca, Borovnice in Brezovice.',
     image: HERO,
   },
   cardText: 'Brezhibno urejene roke, ki naredijo vtis. Gel, trajni lak in podaljševanje za nohte, ki trajajo.',
   overview: [
     'Pri storitvi manikure poskrbim za urejeno obnohtno kožico, nato odvisno od želje stranke in nohtne plošče, naraven noht pokrijem z izbranim materialom. Zelo rada naredim francosko manikuro, delam pa tudi enostavne poslikave. Pri svojem delu uporabljam kvalitetne materijale in ponujam široko paleto barv. Stranka pride na ponovni obisk v roku 3 - 4 tednov, nega doma pa sloni na uporabi olja in čuvanju nohtov pred mehanskimi poškodbami. Za dobro obstojnost nohtov dam 50% jaz, drugih 50% pa stranka.',
+  ],
+  quickFacts: [
+    { label: 'Cena', value: 'od 25 € (osnovna manikura); permanentno lakiranje 30 €, podaljševanje z gelom 35–45 €' },
+    { label: 'Obstojnost', value: '3–4 tedne (permanentni lak in gel)' },
+    { label: 'Naslednji obisk', value: 'korekcija čez 3–4 tedne; cena korekcije je enaka ceni podaljševanja' },
+    { label: 'Primerno za', value: 'naravne, krhke ali kratke nohte; francoska manikura in poslikave po želji' },
   ],
   subservices: [
     {

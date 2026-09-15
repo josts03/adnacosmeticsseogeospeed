@@ -1,0 +1,12 @@
+# Odvisnosti in build izhod (Vercel zgradi sam z `npm run build`)
+node_modules/
+dist/
+.ssr/
+
+# macOS in urejevalniki
+.DS_Store
+*.local
+
+# Finder kopije ("ime 2.ext")
+* 2
+* 2.*

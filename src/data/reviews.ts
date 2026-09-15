@@ -16,3 +16,9 @@ export const reviews: Review[] = [
   { text: 'Tvoji nohti so mi zmeraj drzali, noben ni nikoli odstopil, tudi ce sem jih imela dlje casa gor se noben ni zlomil, toptoptop', name: 'Zoja B.', city: 'Logatec', initial: 'Z', stars: 5 },
   { text: 'Vzdusje na terminu je zelo prijetno, za smeh je vedno poskrbljeno. Sami nohti so narejeni hitro, za ugodno ceno in zelo lepo, vedno po mojih zeljah. Sam salon pa je zelo lepo urejen s prijetno temperaturo in ozracjem.', name: 'Eva D.', city: 'Ljubljana', initial: 'E', stars: 5 },
 ];
+
+/** Število mnenj in povprečna ocena (1 decimalka) – za vidni napis in AggregateRating schemo na domači strani. */
+export const reviewStats = {
+  count: reviews.length,
+  average: Number((reviews.reduce((sum, r) => sum + r.stars, 0) / reviews.length).toFixed(1)),
+};

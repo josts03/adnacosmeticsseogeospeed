@@ -8,10 +8,13 @@ import { FaqSection } from '../components/FaqAccordion';
 import { CtaSection } from '../components/CtaSection';
 import { services } from '../data/services';
 import { homeFaqs } from '../data/faq-home';
-import { reviews as initialReviews } from '../data/reviews';
-import { buildFaqSchema } from '../lib/schema';
+import { reviews as initialReviews, reviewStats } from '../data/reviews';
+import { FOUNDER } from '../data/site';
+import { buildHomeGraph } from '../lib/schema';
 
-const faqSchema = buildFaqSchema(homeFaqs);
+// FAQ + ocene (AggregateRating/Review) na poslovni entiteti; ocene so vidne samo na tej strani.
+const homeSchema = buildHomeGraph(homeFaqs, initialReviews, reviewStats);
+const averageLabel = reviewStats.average.toLocaleString('sl-SI', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 export function Home() {
   const [reviews, setReviews] = useState(initialReviews);
@@ -41,10 +44,10 @@ export function Home() {
   return (
     <>
       <SEO
-        title="Adna Cosmetics – Kozmetični salon Vrhnika | Manikura"
-        description="Manikura, pedikura, lash lift in laminacija obrvi, depilacija ter masaža na Vrhniki. Rezerviraj termin v salonu Adna Cosmetics!"
+        title="Kozmetični salon Vrhnika – Adna Cosmetics"
+        description="Kozmetični salon Adna Cosmetics na Vrhniki: manikura, pedikura, lash lift in laminacija obrvi, depilacija in masaža. Termini po dogovoru."
         path="/"
-        schema={faqSchema}
+        schema={homeSchema}
       />
       {/* Preload hero ozadja samo na tej strani (React 19 značko dvigne v <head>);
           prej je bil v index.html in se je nalagal na vseh podstraneh. */}
@@ -66,7 +69,7 @@ export function Home() {
               <span className="italic text-brand-taupe">v Adna Cosmetics</span>
             </p>
             <h1 className="font-sans font-normal text-lg md:text-xl text-brand-dark/80 mb-10 max-w-lg leading-relaxed">
-              Manikura, pedikura, lash lift in laminacija obrvi, depilacija in masaža. Vse na enem mestu na Vrhniki.
+              Kozmetični salon na Vrhniki za manikuro, pedikuro, lash lift in laminacijo obrvi, depilacijo in masažo. Vse na enem mestu.
             </h1>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -122,7 +125,7 @@ export function Home() {
                 src="/salon-osebje.webp"
                 srcSet="/salon-osebje-800.webp 800w, /salon-osebje.webp 1067w"
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                alt="Adna, ustanoviteljica salona Adna Cosmetics na Vrhniki"
+                alt={`${FOUNDER.name}, ustanoviteljica salona Adna Cosmetics na Vrhniki`}
                 width={1067}
                 height={1600}
                 loading="lazy"
@@ -132,7 +135,7 @@ export function Home() {
             </div>
             
             <div className="absolute -bottom-6 left-1/2 min-w-[280px] sm:min-w-[320px] -translate-x-1/2 bg-white px-6 sm:px-8 py-5 sm:py-6 shadow-xl text-center rounded-sm">
-              <p className="font-serif text-lg sm:text-xl text-brand-dark mb-2">Adna, ustanoviteljica z 5+ let izkušenj.</p>
+              <p className="font-serif text-lg sm:text-xl text-brand-dark mb-2">{FOUNDER.name}, ustanoviteljica z {FOUNDER.yearsExperience}+ let izkušenj.</p>
               <p className="text-brand-dark/70 italic text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">"Moje poslanstvo je, da vsaka stranka zapusti salon bolj samozavestna, kot je prišla."</p>
             </div>
           </div>
@@ -163,7 +166,7 @@ export function Home() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl font-serif mb-4">Mnenja strank</h2>
             <p className="text-brand-dark/70">
-              Kar pravijo moje stranke.
+              {`Kar pravijo moje stranke: povprečna ocena ${averageLabel}/5 iz ${reviewStats.count} mnenj.`}
             </p>
           </div>
 

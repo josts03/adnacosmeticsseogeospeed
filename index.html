@@ -11,29 +11,21 @@
          iz <SEO> komponente vsake strani; v razvoju jih nastavi Helmet na klientu. -->
     <!--app-head-->
 
-    <!-- Preloader zavesa je v prerenderanem HTML-ju; vidna je samo ob prvem obisku v seji.
-         Odločitev mora pasti pred prvim izrisom, zato je tu in ne v Reactu. -->
-    <script>try{if(!sessionStorage.getItem('adna_visited'))document.documentElement.classList.add('first-visit')}catch(e){}</script>
+    <!-- Preloader zavesa je v prerenderanem HTML-ju domače strani; vidna je samo ob prvem obisku
+         v seji in samo na `/` (obiskovalec z Googla na podstrani vsebino vidi takoj). Odločitev
+         mora pasti pred prvim izrisom, zato je tu in ne v Reactu. -->
+    <script>try{if(location.pathname==='/'&&!sessionStorage.getItem('adna_visited'))document.documentElement.classList.add('first-visit')}catch(e){}</script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      />
-    </noscript>
+    <!-- Pisave gostimo lokalno (public/fonts/, @font-face v src/index.css). Prednaložimo naslovno
+         pisavo (oba podnabora, H1 je pogosto LCP) in osnovno besedilno; Inter latin-ext (85 KB)
+         se naloži po potrebi, da ne tekmuje z LCP sliko. -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/playfair-display-latin-ext.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin />
 
-    <!-- TODO: zamenjaj G-XXXXXXXXXX s pravim GA4 measurement ID in ODKOMENTIRAJ blok spodaj.
-         POZOR: pred aktivacijo posodobi politiko zasebnosti in cookie banner —
-         trenutni banner izrecno pravi, da stran NE uporablja analitičnih piškotkov,
-         GA4 pa jih nastavi. Potreben je consent pred nalaganjem (GDPR).
+    <!-- Analitika: zaenkrat izklopljena (odločitev 15. 9. 2026) – merimo samo prek Search Console.
+         Ko bo GA4 želen: measurement ID sem, nalaganje šele po privolitvi (cookie banner + politika
+         zasebnosti trenutno izrecno pravita, da stran NE uporablja analitičnih piškotkov).
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -43,7 +35,9 @@
     </script>
     -->
 
-
+    <!-- Site-wide entitete: WebSite, BeautySalon (#business), ustanoviteljica (#founder).
+         Strani se nanje sklicujejo prek @id (src/lib/schema.ts). Telefon, naslov ulice in
+         delovni čas dodaj sem, ko bodo papirji urejeni (glej src/data/site.ts). -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -60,13 +54,16 @@
           "@type": "BeautySalon",
           "@id": "https://www.adnacosmetics.si/#business",
           "name": "Adna Cosmetics",
-          "description": "Kozmetični salon na Vrhniki. Manikura, pedikura, lash lift in laminacija obrvi, depilacija z voskom ter masaža. Delo poteka izključno po naročilu (po dogovoru).",
+          "alternateName": "Adna Cosmetics Vrhnika",
+          "description": "Kozmetični salon na Vrhniki, ki ga vodi kozmetičarka Adna Hadžalić. Manikura, pedikura, lash lift in laminacija obrvi, depilacija z voskom ter masaža. Delo poteka izključno po naročilu (po dogovoru).",
+          "slogan": "Bodi vse, kar si",
           "url": "https://www.adnacosmetics.si",
           "image": "https://www.adnacosmetics.si/backgroundimage.webp",
           "logo": "https://www.adnacosmetics.si/logo.webp",
           "email": "adnaacosmetics@gmail.com",
           "priceRange": "€€",
           "currenciesAccepted": "EUR",
+          "paymentAccepted": "Cash",
           "knowsLanguage": "sl",
           "address": {
             "@type": "PostalAddress",
@@ -87,10 +84,12 @@
             { "@type": "City", "name": "Borovnica" },
             { "@type": "City", "name": "Brezovica" }
           ],
-          "founder": { "@type": "Person", "name": "Adna", "jobTitle": "Kozmetičarka" },
+          "founder": { "@id": "https://www.adnacosmetics.si/#founder" },
+          "employee": { "@id": "https://www.adnacosmetics.si/#founder" },
           "sameAs": ["https://www.instagram.com/adnaa_cosmetics"],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
+            "@id": "https://www.adnacosmetics.si/#offers",
             "name": "Storitve salona Adna Cosmetics",
             "itemListElement": [
               {
@@ -125,6 +124,22 @@
               }
             ]
           }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.adnacosmetics.si/#founder",
+          "name": "Adna Hadžalić",
+          "givenName": "Adna",
+          "familyName": "Hadžalić",
+          "jobTitle": "Kozmetičarka",
+          "description": "Ustanoviteljica in edina izvajalka v salonu Adna Cosmetics na Vrhniki: več kot 5 let izkušenj, več kot 20 strokovnih izobraževanj v Sloveniji in tujini, izobraževanje na Višji strokovni šoli za kozmetiko in velnes Ljubljana.",
+          "url": "https://www.adnacosmetics.si/o-meni",
+          "image": "https://www.adnacosmetics.si/profilna-slika.webp",
+          "worksFor": { "@id": "https://www.adnacosmetics.si/#business" },
+          "alumniOf": { "@type": "EducationalOrganization", "name": "Višja strokovna šola za kozmetiko in velnes Ljubljana" },
+          "knowsAbout": ["Manikura", "Podaljševanje nohtov z gelom", "Permanentno lakiranje", "Pedikura", "Lash lift", "Laminacija obrvi", "Depilacija z voskom", "Klasična masaža"],
+          "knowsLanguage": "sl",
+          "sameAs": ["https://www.instagram.com/adnaa_cosmetics"]
         }
       ]
     }
@@ -135,4 +150,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

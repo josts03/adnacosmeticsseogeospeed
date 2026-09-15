@@ -2,15 +2,29 @@ import { SEO } from '../components/SEO';
 import { PageHeader } from '../components/PageHeader';
 import { PriceTable } from '../components/PriceTable';
 import { services } from '../data/services';
+import { OFFERS_ID, SITE_URL } from '../data/site';
+import { buildPageGraph } from '../lib/schema';
+import { useScrollToHash } from '../lib/useScrollToHash';
+
+const TITLE = 'Cenik: manikura, pedikura, lash lift Vrhnika | Adna Cosmetics';
+const DESCRIPTION =
+  'Cenik kozmetičnih storitev na Vrhniki – manikura od 25 €, pedikura, lash lift in laminacija obrvi, depilacija in masaža v salonu Adna Cosmetics.';
+
+/** Glavna entiteta cenika je OfferCatalog (#offers) iz index.html. */
+const schema = buildPageGraph({
+  path: '/cenik',
+  title: TITLE,
+  description: DESCRIPTION,
+  crumbs: [{ name: 'Cenik', url: `${SITE_URL}/cenik` }],
+  extra: { mainEntity: { '@id': OFFERS_ID } },
+});
 
 export function Pricelist() {
+  useScrollToHash();
+
   return (
     <>
-      <SEO
-        title="Cenik: manikura, pedikura, lash lift Vrhnika | Adna Cosmetics"
-        description="Cenik kozmetičnih storitev na Vrhniki – manikura od 25 €, pedikura, lash lift in laminacija obrvi, depilacija in masaža v salonu Adna Cosmetics."
-        path="/cenik"
-      />
+      <SEO title={TITLE} description={DESCRIPTION} path="/cenik" schema={schema} />
       <PageHeader
         title="Cenik storitev"
         subtitle="Transparenten cenik manikure, pedikure, lash lifta, depilacije in masaže v salonu Adna Cosmetics na Vrhniki."
@@ -23,6 +37,7 @@ export function Pricelist() {
           {services.map((service, index) => (
             <PriceTable
               key={service.id}
+              id={service.id}
               title={`${index + 1}. ${service.name}`}
               items={service.prices}
               note={service.priceNote}

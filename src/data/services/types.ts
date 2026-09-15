@@ -24,6 +24,12 @@ export interface Step {
   text: string;
 }
 
+/** Ena vrstica v bloku »Na kratko« (npr. Cena → »od 25 €«). */
+export interface QuickFact {
+  label: string;
+  value: string;
+}
+
 /**
  * Podstoritev znotraj storitve (npr. "Permanentno lakiranje" pri manikuri) – en blok
  * na podstrani: naslov, kratek opis, "Preberi več" z dodatnimi odstavki in slikami.
@@ -45,7 +51,7 @@ export interface SubService {
 /**
  * Ena storitev = en objekt. Iz njega se generirajo: kartica na domači strani in hubu,
  * sekcija na domači strani, podstran storitve, sekcija v ceniku, možnost v kontaktnem
- * obrazcu, Service/FAQ/Breadcrumb schema in vnos v sitemap.
+ * obrazcu, Service/FAQ/Breadcrumb schema, vnos v sitemap in llms.txt.
  */
 export interface Service {
   /** Stabilen ID; je tudi sidro (#manikura), ki ga uporabljajo obstoječe povezave. */
@@ -72,6 +78,13 @@ export interface Service {
     title: string;
     description: string;
   };
+  /** ISO datum prve objave podstrani (schema datePublished). */
+  published: string;
+  /**
+   * ISO datum zadnje vsebinske spremembe – ročno posodobi ob spremembi besedila ali cen.
+   * Gre v sitemap.xml (lastmod) in WebPage schemo (dateModified).
+   */
+  modified: string;
   /** Napisi v pravilnem sklonu (slovenščina se ne da zanesljivo generirati). */
   labels: {
     /** Gumb/povezava na podstran, npr. 'Več o manikuri'. */
@@ -91,6 +104,11 @@ export interface Service {
   cardText: string;
   /** Kratek opis za hub in domačo stran – odstavki. */
   overview: string[];
+  /**
+   * »Na kratko« na podstrani: dejstva, specifična za storitev (cena od, obstojnost, naslednji obisk …).
+   * Splošna dejstva (plačilo, kraj, naročanje) doda komponenta QuickFacts iz src/data/site.ts.
+   */
+  quickFacts: QuickFact[];
   /** Bloki podstoritev na podstrani (vrstni red = vrstni red prikaza). */
   subservices: SubService[];
   /** "Kako poteka termin" – koraki. */
@@ -99,7 +117,7 @@ export interface Service {
   tips: Step[];
   prices: PriceItem[];
   priceNote?: string;
-  /** Razpon cen za schemo (EUR). */
+  /** Razpon cen za schemo (EUR); min je cena osnovne storitve (»od X €« na hubu). */
   priceRange: { min: number; max: number };
   gallery: ImageAsset[];
   faq: FaqItem[];

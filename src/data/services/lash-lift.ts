@@ -23,6 +23,8 @@ export const lashLift: Service = {
     description:
       'Lash lift in laminacija obrvi na Vrhniki. Privzdignjene naravne trepalnice in urejene obrvi za več tednov, po želji z barvanjem. Od 35 €, duo 60 €.',
   },
+  published: '2026-09-15',
+  modified: '2026-09-15',
   labels: {
     more: 'Več o lash liftu in obrveh',
     overview: 'Kaj vključujeta lash lift in laminacija obrvi?',
@@ -37,6 +39,12 @@ export const lashLift: Service = {
   cardText: 'Oblikovanje, laminacija in lash lift, ki traja tedne. Zbudi se urejena.',
   overview: [
     'Vihanje trepalnic (lash lift) je tehnika s katero privzdignem naravne trepalnice, po želji lahko trepalnice tudi pobarvam. Oči bodo videti bolj odprte, trepalnice pa zavihane, bolj goste in daljše. Pri laminaciji obrvi pa prav tako lahko vključim barvanje; laminacija pomaga obvladovati dlačice in ustvariti lepo obliko brez gelov. Za najboljše rezultate se prvih 24h po tretmaju izogibaj savnam in močenju.',
+  ],
+  quickFacts: [
+    { label: 'Cena', value: 'lash lift 35 €, laminacija obrvi 35 €, duo 60 €; z barvanjem 40 € oziroma duo 70 €' },
+    { label: 'Obstojnost', value: 'lash lift 6–8 tednov, laminacija obrvi 4–6 tednov' },
+    { label: 'Nega po tretmaju', value: 'prvih 24 ur brez vode, savne, maskare in mastnih krem' },
+    { label: 'Primerno za', value: 'naravne trepalnice brez umetnih šopov; neukrotljive, redke ali navzdol rastoče obrvi' },
   ],
   subservices: [
     {

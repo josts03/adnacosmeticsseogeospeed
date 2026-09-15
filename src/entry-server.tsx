@@ -17,6 +17,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AppShell } from './App';
 
 export { routes } from './routes';
+// Podatki za dist/llms.txt (scripts/prerender.mjs) – isti vir kot strani.
+export { services } from './data/services';
+export { homeFaqs } from './data/faq-home';
+export * as site from './data/site';
 
 export interface RenderResult {
   /** Vsebina, ki gre v <div id="root">. */

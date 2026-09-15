@@ -5,7 +5,7 @@ import { depilacija } from './depilacija';
 import { masaza } from './masaza';
 import type { Service, ServiceId } from './types';
 
-export type { Service, ServiceId, ImageAsset, PriceItem, FaqItem, Step, SubService } from './types';
+export type { Service, ServiceId, ImageAsset, PriceItem, FaqItem, Step, SubService, QuickFact } from './types';
 
 /**
  * Vse storitve v vrstnem redu prikaza (domača stran, hub, cenik, navigacija).

@@ -1,10 +1,23 @@
 import { SEO } from '../components/SEO';
 import { PageHeader } from '../components/PageHeader';
 import { services } from '../data/services';
+import { SITE_URL } from '../data/site';
+import { buildPageGraph } from '../lib/schema';
 import { Mail, MapPin, Instagram, Clock, CheckCircle } from 'lucide-react';
 import { useState, useRef, useEffect, FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { normalizeField } from '../utils/formText';
+
+const TITLE = 'Naroči se | Adna Cosmetics Vrhnika';
+const DESCRIPTION = 'Rezerviraj termin v salonu Adna Cosmetics na Vrhniki. Piši mi ali se naroči prek obrazca.';
+
+const schema = buildPageGraph({
+  type: 'ContactPage',
+  path: '/kontakt',
+  title: TITLE,
+  description: DESCRIPTION,
+  crumbs: [{ name: 'Kontakt', url: `${SITE_URL}/kontakt` }],
+});
 
 // Storitve iz skupnih podatkov + dve splošni možnosti; value se pošlje na Formspree.
 const SERVICE_OPTIONS = [
@@ -104,11 +117,7 @@ export function Contact() {
 
   return (
     <>
-      <SEO
-        title="Naroči se | Adna Cosmetics Vrhnika"
-        description="Rezerviraj termin v salonu Adna Cosmetics na Vrhniki. Piši mi ali se naroči prek obrazca."
-        path="/kontakt"
-      />
+      <SEO title={TITLE} description={DESCRIPTION} path="/kontakt" schema={schema} />
       <PageHeader
         title="Kontakt"
         subtitle="Stopi v stik ali rezerviraj svoj termin v kozmetičnem salonu na Vrhniki."

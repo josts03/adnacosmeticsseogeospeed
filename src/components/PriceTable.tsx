@@ -9,12 +9,14 @@ interface PriceTableProps {
   ctaHref?: string;
   /** Povezava na podstran storitve (samo na strani Cenik). */
   more?: { href: string; label: string };
+  /** Sidro sekcije (npr. 'manikura' → /cenik#manikura). */
+  id?: string;
 }
 
 /** Sekcija cenika s pikčastim leaderjem – stil s strani Cenik. */
-export function PriceTable({ title, items, note, ctaHref = '/kontakt', more }: PriceTableProps) {
+export function PriceTable({ title, items, note, ctaHref = '/kontakt', more, id }: PriceTableProps) {
   return (
-    <div>
+    <div id={id} className={id ? 'scroll-mt-28 md:scroll-mt-36' : undefined}>
       <h2 className="text-3xl font-serif mb-8 text-brand-dark border-b border-brand-nude pb-4">{title}</h2>
       {more && (
         <Link to={more.href} className="inline-flex items-center -mt-4 mb-6 text-sm font-semibold text-brand-taupe hover:text-brand-dark transition-colors uppercase tracking-widest">

@@ -1,15 +1,10 @@
 import type { FaqItem, PriceItem, Service } from '../data/services';
-import { BUSINESS_ID, SITE_URL, WEBSITE_ID } from '../data/site';
+import { services } from '../data/services';
+import type { Review } from '../data/reviews';
+import { AREA_SERVED, BUSINESS_ID, FOUNDER_ID, SITE_URL, WEBSITE_ID } from '../data/site';
 
-const AREA_SERVED = ['Vrhnika', 'Ljubljana', 'Logatec', 'Borovnica', 'Brezovica'].map((name) => ({
-  '@type': 'City',
-  name,
-}));
-
-/** FAQPage JSON-LD iz seznama vprašanj (isti seznam, kot ga vidi uporabnik). */
-export function buildFaqSchema(items: FaqItem[]) {
-  return { '@context': 'https://schema.org', ...buildFaqNode(items) };
-}
+const CONTEXT = 'https://schema.org';
+const AREA_SERVED_NODES = AREA_SERVED.map((name) => ({ '@type': 'City', name }));
 
 function buildFaqNode(items: FaqItem[], id?: string) {
   return {
@@ -59,9 +54,122 @@ function offerFor(item: PriceItem) {
   return { ...base, price: String(nums[0] ?? '') };
 }
 
+export interface PageGraphOptions {
+  /** Tip strani; privzeto WebPage. */
+  type?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage';
+  path: string;
+  title: string;
+  description: string;
+  /** Drobtinice brez »Domov« (doda se sama); zadnja je trenutna stran. */
+  crumbs: CrumbSchema[];
+  /** Dodatne lastnosti vozla strani (mainEntity, datePublished …). */
+  extra?: Record<string, unknown>;
+  /** Dodatni vozli v grafu (ItemList, FAQPage …). */
+  nodes?: object[];
+}
+
+/**
+ * Graf za navadno stran: vozel strani (WebPage ali podtip), povezan z WebSite (#website)
+ * in salonom (#business) iz index.html, + BreadcrumbList.
+ */
+export function buildPageGraph({ type = 'WebPage', path, title, description, crumbs, extra = {}, nodes = [] }: PageGraphOptions) {
+  const url = `${SITE_URL}${path}`;
+  const breadcrumbId = `${url}#breadcrumb`;
+  return {
+    '@context': CONTEXT,
+    '@graph': [
+      {
+        '@type': type,
+        '@id': `${url}#webpage`,
+        url,
+        name: title,
+        description,
+        inLanguage: 'sl-SI',
+        isPartOf: { '@id': WEBSITE_ID },
+        about: { '@id': BUSINESS_ID },
+        breadcrumb: { '@id': breadcrumbId },
+        ...extra,
+      },
+      buildBreadcrumbList([{ name: 'Domov', url: `${SITE_URL}/` }, ...crumbs], breadcrumbId),
+      ...nodes,
+    ],
+  };
+}
+
+/**
+ * Hub /storitve: CollectionPage + ItemList vseh storitev. Vsak element ima isti @id kot
+ * Service na svoji podstrani (in v OfferCatalog v index.html), zato se vozli združijo.
+ */
+export function buildServicesHubGraph(opts: { title: string; description: string }) {
+  const url = `${SITE_URL}/storitve`;
+  const listId = `${url}#list`;
+  return buildPageGraph({
+    type: 'CollectionPage',
+    path: '/storitve',
+    ...opts,
+    crumbs: [{ name: 'Storitve', url }],
+    extra: { mainEntity: { '@id': listId } },
+    nodes: [
+      {
+        '@type': 'ItemList',
+        '@id': listId,
+        name: 'Storitve salona Adna Cosmetics',
+        numberOfItems: services.length,
+        itemListOrder: 'https://schema.org/ItemListOrderAscending',
+        itemListElement: services.map((s, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          item: {
+            '@type': 'Service',
+            '@id': `${SITE_URL}${s.path}#service`,
+            name: s.name,
+            serviceType: s.serviceType,
+            description: s.cardText,
+            url: `${SITE_URL}${s.path}`,
+            provider: { '@id': BUSINESS_ID },
+          },
+        })),
+      },
+    ],
+  });
+}
+
+/**
+ * Domača stran: FAQPage + ocene na poslovni entiteti (#business iz index.html).
+ * Ocene so v schemi samo tu, kjer so tudi vidne. Google za lastne ocene ne prikazuje zvezdic,
+ * AI iskalniki pa AggregateRating/Review berejo.
+ */
+export function buildHomeGraph(faqs: FaqItem[], reviews: Review[], stats: { count: number; average: number }) {
+  return {
+    '@context': CONTEXT,
+    '@graph': [
+      buildFaqNode(faqs, `${SITE_URL}/#faq`),
+      {
+        '@type': 'BeautySalon',
+        '@id': BUSINESS_ID,
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: stats.average,
+          bestRating: 5,
+          worstRating: 1,
+          ratingCount: stats.count,
+          reviewCount: stats.count,
+        },
+        review: reviews.map((r) => ({
+          '@type': 'Review',
+          author: { '@type': 'Person', name: r.name },
+          reviewRating: { '@type': 'Rating', ratingValue: r.stars, bestRating: 5, worstRating: 1 },
+          reviewBody: r.text,
+          inLanguage: 'sl',
+        })),
+      },
+    ],
+  };
+}
+
 /**
  * Graf za podstran storitve: Service (povezan z BeautySalon #business iz index.html),
- * WebPage, ImageObject, BreadcrumbList in FAQPage (če so vprašanja).
+ * WebPage (z datumi in avtorico #founder), ImageObject, BreadcrumbList in FAQPage (če so vprašanja).
  */
 export function buildServiceGraph(service: Service) {
   const url = `${SITE_URL}${service.path}`;
@@ -76,7 +184,7 @@ export function buildServiceGraph(service: Service) {
   };
 
   return {
-    '@context': 'https://schema.org',
+    '@context': CONTEXT,
     '@graph': [
       {
         '@type': 'Service',
@@ -86,9 +194,10 @@ export function buildServiceGraph(service: Service) {
         description: service.hero.intro,
         url,
         provider: { '@id': BUSINESS_ID },
-        areaServed: AREA_SERVED,
+        areaServed: AREA_SERVED_NODES,
         image: { '@id': ids.image },
         offers: service.prices.map(offerFor),
+        termsOfService: `${SITE_URL}/pogoji-poslovanja`,
       },
       {
         '@type': 'WebPage',
@@ -97,6 +206,9 @@ export function buildServiceGraph(service: Service) {
         name: service.seo.title,
         description: service.seo.description,
         inLanguage: 'sl-SI',
+        datePublished: service.published,
+        dateModified: service.modified,
+        author: { '@id': FOUNDER_ID },
         isPartOf: { '@id': WEBSITE_ID },
         about: { '@id': ids.service },
         breadcrumb: { '@id': ids.breadcrumb },

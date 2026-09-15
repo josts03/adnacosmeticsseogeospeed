@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { QuickFacts } from '../components/QuickFacts';
 import { SubServiceBlock } from '../components/SubServiceBlock';
+import { WhyMe } from '../components/WhyMe';
 import { Gallery } from '../components/Gallery';
 import { PriceTable } from '../components/PriceTable';
 import { TipsGrid } from '../components/TipsGrid';
@@ -52,6 +54,9 @@ export function ServicePage({ service }: { service: Service }) {
             </a>
           </div>
         </div>
+
+        {/* Na kratko: ključna dejstva (cena, obstojnost, plačilo, kraj, naročanje) */}
+        <QuickFacts service={service} />
       </div>
 
       {/* Podstoritve: izmenični bloki, ločeni s tankimi črtami */}
@@ -97,6 +102,9 @@ export function ServicePage({ service }: { service: Service }) {
         </section>
       )}
 
+      {/* Zakaj k meni: izkušnje, izobraževanja, šola (E-E-A-T) */}
+      <WhyMe />
+
       {/* Galerija */}
       {service.gallery.length > 0 && (
         <section className="py-24 bg-white border-t border-brand-nude">
@@ -116,7 +124,7 @@ export function ServicePage({ service }: { service: Service }) {
           <PriceTable title={labels.prices} items={service.prices} note={service.priceNote} ctaHref={bookingHref} />
           <p className="mt-10 text-center text-sm text-brand-dark/70">
             Celoten cenik vseh storitev najdeš na strani{' '}
-            <Link to="/cenik" className="underline text-brand-taupe hover:text-brand-dark transition-colors">
+            <Link to={`/cenik#${service.id}`} className="underline text-brand-taupe hover:text-brand-dark transition-colors">
               Cenik
             </Link>
             .

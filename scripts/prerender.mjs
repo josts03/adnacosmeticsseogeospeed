@@ -7,7 +7,7 @@
  *      v šablono vstavi <head> značke iz Helmeta in HTML vsebine v #root,
  *      ter zapiše dist/<pot>.html (koren → dist/index.html; Vercel cleanUrls),
  *   3. izrenderira stran 404 v dist/404.html (Vercel jo servira s statusom 404),
- *   4. zapiše dist/sitemap.xml iz istih rut,
+ *   4. zapiše dist/sitemap.xml iz istih rut in dist/llms.txt iz podatkov storitev (GEO),
  *   5. preveri: vsaka stran ima <title>, description in canonical; naslovi so unikatni.
  *
  * Če karkoli manjka, build pade – bolje glasna napaka kot deploy s praznim HTML-jem.
@@ -34,7 +34,7 @@ const template = readFileSync(templatePath, 'utf8');
 if (!template.includes(HEAD_MARK)) fail(`index.html nima označbe ${HEAD_MARK}.`);
 if (!template.includes(ROOT_MARK)) fail(`index.html nima ${ROOT_MARK}.`);
 
-const { render, routes } = await import(pathToFileURL(entryPath).href);
+const { render, routes, services, homeFaqs, site } = await import(pathToFileURL(entryPath).href);
 
 const pages = [];
 
@@ -96,6 +96,36 @@ writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries.join('\n')}\n</urlset>\n`,
 );
 
+// 4b. llms.txt – strnjen, strojno berljiv povzetek strani za AI iskalnike (GEO).
+//     Nastane iz istih podatkov kot strani (storitve, cene, FAQ), zato nikoli ne zastara.
+const nearby = site.AREA_SERVED.filter((place) => place !== site.CITY);
+const llms = [
+  `# ${site.SITE_NAME}`,
+  '',
+  `> Kozmetični salon na Vrhniki (Slovenija), ki ga vodi ${site.FOUNDER.jobTitle.toLowerCase()} ${site.FOUNDER.name}. Manikura, pedikura, lash lift in laminacija obrvi, depilacija z voskom in masaža. Delo izključno po naročilu, plačilo ${site.PAYMENT_WITH}.`,
+  '',
+  `Stranke prihajajo z Vrhnike in iz krajev ${nearby.join(', ')}. Naročanje: ${site.BOOKING_LABEL}. E-pošta: ${site.EMAIL}. Instagram: ${site.INSTAGRAM_URL}`,
+  '',
+  '## Storitve',
+  '',
+  ...services.map(
+    (s) => `- [${s.h1}](${SITE_URL}${s.path}): ${s.hero.intro} Cenik: ${s.prices.map((p) => `${p.name} ${p.price}`).join(', ')}.`,
+  ),
+  '',
+  '## Ostale strani',
+  '',
+  `- [Vse storitve](${SITE_URL}/storitve): pregled vseh storitev s povezavami na podstrani.`,
+  `- [Cenik](${SITE_URL}/cenik): celoten cenik in pogoji odpovedi termina.`,
+  `- [O meni](${SITE_URL}${site.FOUNDER.path}): ${site.FOUNDER.name}, ${site.FOUNDER.jobTitle.toLowerCase()}, ${site.FOUNDER.yearsExperience}+ let izkušenj, ${site.FOUNDER.trainings}+ strokovnih izobraževanj, ${site.FOUNDER.school}.`,
+  `- [Kontakt in naročanje](${SITE_URL}/kontakt)`,
+  `- [Pogoji poslovanja](${SITE_URL}/pogoji-poslovanja)`,
+  '',
+  '## Pogosta vprašanja',
+  '',
+  ...homeFaqs.map((f) => `- **${f.q}** ${f.a}`),
+].join('\n');
+writeFileSync(join(DIST, 'llms.txt'), `${llms}\n`);
+
 // 5. Strežniški bundle ne sme v deploy
 rmSync(SSR_DIR, { recursive: true, force: true });
 
@@ -103,7 +133,7 @@ console.log('\nPrerender končan:');
 for (const p of pages) {
   console.log(`  ${p.url.padEnd(22)} ${String(p.bytes).padStart(7)} B  ${p.title}`);
 }
-console.log(`  sitemap.xml: ${sitemapEntries.length} URL-jev\n`);
+console.log(`  sitemap.xml: ${sitemapEntries.length} URL-jev, llms.txt: ${services.length} storitev\n`);
 
 function match(text, re) {
   const m = re.exec(text);

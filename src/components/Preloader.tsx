@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 
 const TITLE = "ADNA COSMETICS";
@@ -19,18 +20,21 @@ function isFirstVisit(): boolean {
 }
 
 /**
- * Zavesa ob prvem obisku.
+ * Zavesa ob prvem obisku – samo na domači strani.
  *
- * Zavesa je del prerenderanega HTML-ja (na strežniku in ob hidraciji je `show`
- * vedno true, da se DOM ujema). Ali jo obiskovalec sploh vidi, pred prvim izrisom
- * odloči inline skripta v index.html: samo ob prvem obisku doda razred `first-visit`
- * na <html>, sicer jo CSS (index.css, `.preloader-curtain`) skrije.
+ * Obiskovalec, ki z Googla pristane na podstrani storitve, vsebino vidi takoj; zavesa
+ * je brand trenutek le za vstop prek domače strani. Na `/` je del prerenderanega HTML-ja
+ * (na strežniku in ob hidraciji je `show` true, da se DOM ujema); ali jo obiskovalec sploh
+ * vidi, pred prvim izrisom odloči inline skripta v index.html: samo ob prvem obisku v seji
+ * in samo na `/` doda razred `first-visit` na <html>, sicer jo CSS (`.preloader-curtain`) skrije.
+ * Na ostalih poteh se zavesa sploh ne izriše.
  */
 export default function Preloader() {
-  const [show, setShow] = useState(true);
+  const isHome = useLocation().pathname === "/";
+  const [show, setShow] = useState(isHome);
 
   useEffect(() => {
-    if (!isFirstVisit()) {
+    if (!isHome || !isFirstVisit()) {
       setShow(false);
       return;
     }
@@ -74,6 +78,8 @@ export default function Preloader() {
       clearTimeout(capTimer);
       document.documentElement.style.overflow = "";
     };
+    // Zavesa se odloči enkrat, ob prvem izrisu; kasnejša navigacija je ne prikaže znova.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -101,7 +107,7 @@ export default function Preloader() {
                   transition={{ delay: 0.04 + i * 0.02, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="inline-block font-serif text-[22px] tracking-[0.18em] text-brand-light sm:text-3xl sm:tracking-[0.25em] md:text-5xl"
                 >
-                  {ch === " " ? " " : ch}
+                  {ch === " " ? " " : ch}
                 </motion.span>
               ))}
             </div>

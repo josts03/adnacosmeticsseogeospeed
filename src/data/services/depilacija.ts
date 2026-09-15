@@ -23,6 +23,8 @@ export const depilacija: Service = {
     description:
       'Depilacija z vročim voskom na Vrhniki: noge, roke, pazduhe in obraz. Gladka koža več tednov, dlačice se s časom razredčijo. Cene od 10 €.',
   },
+  published: '2026-09-15',
+  modified: '2026-09-15',
   labels: {
     more: 'Več o depilaciji',
     overview: 'Kaj vključuje depilacija z voskom?',
@@ -37,6 +39,12 @@ export const depilacija: Service = {
   cardText: 'Do 4 tedne gladke kože brez britja. Učinkovito voskanje za vse tipe kože.',
   overview: [
     'S pomočjo vročega voska izpulim dlačico z mešičkom. Depilacija omogoča mehko kožo nekaj tednov, pri redni depilaciji se dlačice stanjšajo, posvetlijo in razredčijo. Po depilaciji se prvih 24-48h izogibaj direktnemu soncu.',
+  ],
+  quickFacts: [
+    { label: 'Cena', value: 'od 10 € (obraz) do 30 € (cele noge); pazduhe 12 €, roke 20 €, noge do kolen 20 €' },
+    { label: 'Gladka koža', value: '3–4 tedne; z redno depilacijo dlačice rastejo tanjše in redkejše' },
+    { label: 'Priporočen razmik', value: '4–6 tednov, ko so dlačice dolge vsaj 4–5 mm' },
+    { label: 'Način', value: 'vroči vosek, ki se oprime dlačic in ne kože; primeren tudi za občutljive predele' },
   ],
   subservices: [
     {
