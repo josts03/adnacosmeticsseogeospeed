@@ -24,7 +24,7 @@ export const lashLift: Service = {
       'Lash lift in laminacija obrvi na Vrhniki. Privzdignjene naravne trepalnice in urejene obrvi za več tednov, po želji z barvanjem. Od 35 €, duo 60 €.',
   },
   published: '2026-09-15',
-  modified: '2026-09-15',
+  modified: '2026-09-17',
   labels: {
     more: 'Več o lash liftu in obrveh',
     overview: 'Kaj vključujeta lash lift in laminacija obrvi?',
@@ -105,7 +105,7 @@ export const lashLift: Service = {
     {
       title: 'Pred terminom',
       text:
-        'Pridi brez maskare in ličil na območju oči in obrvi. Če nosiš kontaktne leče, jih boš med lash liftom morda želela odstraniti, zato vzemi s seboj škatlico.',
+        'Pridi brez maskare in ličil na območju oči in obrvi. Če nosiš kontaktne leče, jih boš med lash liftom morala odstraniti, zato vzemi s seboj škatlico.',
     },
     {
       title: 'Prvih 24 ur',
@@ -115,7 +115,7 @@ export const lashLift: Service = {
     {
       title: 'Nega doma',
       text:
-        'Trepalnice vsak dan počeši s čisto krtačko, obrvi pa zjutraj počeši v obliko. Negovalni serum ali olje lahko uporabljaš po prvih 24 urah. Vodoodporne maskare se raje izogibaj, ker jo je težko odstraniti brez drgnjenja.',
+        'Trepalnice vsak dan počeši s čisto krtačko, obrvi pa zjutraj počeši v obliko, ko so mokre. Negovalni serum ali olje lahko uporabljaš po prvih 24 urah. Vodoodporne maskare se raje izogibaj, ker jo je težko odstraniti brez drgnjenja.',
     },
     {
       title: 'Kdaj ponoviti',
@@ -140,32 +140,12 @@ export const lashLift: Service = {
       a: 'Lash lift privzdigne in zavije tvoje lastne trepalnice, brez umetnih trepalnic in lepila. Oči so videti bolj odprte, trepalnice daljše in gostejše, nega pa je preprosta. Pri podaljševanju se na trepalnice lepijo umetni šopi, ki potrebujejo redno polnjenje.',
     },
     {
-      q: 'Kaj je laminacija obrvi?',
-      a: 'Laminacija obrvi je tretma, pri katerem dlačice usmerim v želeno smer in jih fiksiram, tako da obrvi delujejo urejene, polnejše in oblikovane brez gela. Primerna je za neukrotljive, redke ali navzdol rastoče dlačice.',
-    },
-    {
-      q: 'Koliko časa zdrži lash lift in laminacija obrvi?',
-      a: 'Lash lift zdrži približno 6–8 tednov, laminacija obrvi pa 4–6 tednov, odvisno od naravnega cikla rasti dlačic in nege. Barvanje lepo dopolni rezultat, ker so dlačice temnejše in bolj vidne.',
-    },
-    {
-      q: 'Ali lash lift boli ali je nevaren za oči?',
-      a: 'Tretma ni boleč. Oči imaš ves čas zaprte, sredstva pa nanašam na trepalnice, ne na kožo ali oko. Pred prvim tretmajem mi povej za alergije ali občutljivost, da se dogovoriva o previdnostnih ukrepih.',
-    },
-    {
       q: 'Kako se pripravim na termin?',
-      a: 'Pridi brez maskare in ličil na območju oči in obrvi. Trepalnice naj bodo čiste in brez ostankov olja ali kreme. Če nosiš leče, jih boš med tretmajem lahko odstranila.',
-    },
-    {
-      q: 'Kakšna je nega po tretmaju?',
-      a: 'Prvih 24 ur trepalnic in obrvi ne moči, izogibaj se savni, pari, maskari in mastnim kremam ter ne spi na obrazu. Potem lahko živiš popolnoma normalno, tudi plavaš in uporabljaš maskaro.',
+      a: 'Pridi brez maskare in ličil na območju oči in obrvi. Trepalnice naj bodo čiste in brez ostankov olja ali kreme. Če nosiš leče, jih boš med tretmajem odstranila.',
     },
     {
       q: 'Koliko stane lash lift in laminacija obrvi na Vrhniki?',
-      a: 'Lash lift stane 35 €, z barvanjem 40 €. Laminacija obrvi stane 35 €, z barvanjem 40 €. Duo, torej oboje na istem terminu, stane 60 €, z barvanjem pa 70 €. Plačilo je z gotovino.',
-    },
-    {
-      q: 'Ali lahko lash lift in laminacijo obrvi naredim na istem terminu?',
-      a: 'Da, to je duo paket, ki je tudi cenovno ugodnejši (60 € ali 70 € z barvanjem). Oba tretmaja opravim v enem obisku, tako da prihraniš čas in dobiš usklajen rezultat.',
+      a: 'Lash lift stane 35 €, z barvanjem 40 €. Laminacija obrvi stane 35 €, z barvanjem 40 €. Duo, torej oboje na istem terminu, stane 60 €, z barvanjem pa 70 €. Plačilo je z gotovino.',
     },
   ],
 };

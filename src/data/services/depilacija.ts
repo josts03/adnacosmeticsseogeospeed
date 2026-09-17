@@ -24,7 +24,7 @@ export const depilacija: Service = {
       'Depilacija z vročim voskom na Vrhniki: noge, roke, pazduhe in obraz. Gladka koža več tednov, dlačice se s časom razredčijo. Cene od 10 €.',
   },
   published: '2026-09-15',
-  modified: '2026-09-15',
+  modified: '2026-09-17',
   labels: {
     more: 'Več o depilaciji',
     overview: 'Kaj vključuje depilacija z voskom?',
@@ -54,7 +54,7 @@ export const depilacija: Service = {
         'S pomočjo vročega voska izpulim dlačico z mešičkom, zato je koža gladka več tednov. Izbiraš med depilacijo celih nog ali le do kolen.',
       details: [
         'Vroči vosek se oprime dlačic in ne kože, zato je prijaznejši do občutljive kože. Pri redni depilaciji se dlačice stanjšajo, posvetlijo in razredčijo.',
-        'Po depilaciji se prvih 24–48 ur izogibaj neposrednemu soncu, savni in tesnim oblačilom. Cele noge stanejo 30 €, noge do kolen 20 €.',
+        'Po depilaciji se prvih 24–48 ur izogibaj neposrednemu soncu, savni in tesnim oblačilom. Depilacija celih nog stane 30 €, noge do kolen pa 20 €.',
       ],
       image: HERO,
     },
@@ -83,7 +83,7 @@ export const depilacija: Service = {
     {
       title: 'Priprava kože',
       text:
-        'Kožo očistim in razmastim, da se vosek dobro oprime dlačic. Preveriva, da je koža brez opeklin, ran ali draženja.',
+        'Na kožo nanesem baby puder, da se vosek dobro oprime dlačic. Preveriva, da je koža brez opeklin, ran ali draženja.',
     },
     {
       title: 'Nanos vročega voska',
@@ -105,7 +105,7 @@ export const depilacija: Service = {
     {
       title: 'Dolžina dlačic',
       text:
-        'Dlačice naj bodo dolge vsaj 4–5 mm, kar je približno 2–3 tedne po zadnjem britju. Prekratkih dlačic vosek ne zagrabi, predolge pa lahko pred terminom skrajšaš.',
+        'Dlačice naj bodo dolge vsaj 4–5 mm, kar je približno 2–3 tedne po zadnjem britju. Prekratkih dlačic vosek ne zagrabi, zato depilacija ne bo imela učinka.',
     },
     {
       title: 'Pred terminom',
@@ -134,12 +134,8 @@ export const depilacija: Service = {
   gallery: [],
   faq: [
     {
-      q: 'Kako dolge morajo biti dlačice za depilacijo z voskom?',
-      a: 'Vsaj 4–5 mm, kar je približno 2–3 tedne rasti po britju. Tako jih vosek zanesljivo zagrabi in izpuli z mešičkom. Če so daljše, jih lahko pred terminom skrajšaš s škarjami.',
-    },
-    {
       q: 'Ali depilacija z voskom boli?',
-      a: 'Iskreno: prvič lahko malo peče, predvsem na občutljivih predelih, kot so pazduhe. Z vsako naslednjo depilacijo je manj neprijetno, ker se dlačice stanjšajo in redčijo. Vroči vosek je do kože prijaznejši od trakov, ker se oprime samo dlačic.',
+      a: 'Zelo odvisno od osebe, lahko boli, predvsem na občutljivih predelih, kot so pazduhe. Z vsako naslednjo depilacijo je manj neprijetno, ker se dlačice stanjšajo in redčijo.',
     },
     {
       q: 'Koliko časa je koža gladka po depilaciji?',
@@ -147,23 +143,15 @@ export const depilacija: Service = {
     },
     {
       q: 'Kako pogosto naj hodim na depilacijo?',
-      a: 'Priporočam vsakih 4–6 tednov, ko dlačice spet zrastejo na 4–5 mm. Redni termini so ključni, da dlačice rastejo enakomerno in da je vsaka naslednja depilacija hitrejša in manj neprijetna.',
-    },
-    {
-      q: 'Kako se pripravim na depilacijo?',
-      a: 'Dan prej naredi piling, na dan termina ne uporabljaj kreme, olja ali dezodoranta na predelu depilacije. Ne sonči se in ne obiskuj solarija vsaj dan prej. Pridi v udobnih, ohlapnih oblačilih.',
-    },
-    {
-      q: 'Kaj naj naredim po depilaciji?',
-      a: 'Prvih 24–48 ur brez sonca, solarija, savne, bazena in tesnih oblačil. Kožo negovalno mažeš vsak dan, po 2–3 dneh pa dodaj nežen piling dva- do trikrat na teden, da preprečiš vraščanje dlačic.',
+      a: 'Priporočam vsakih 4–6 tednov, ko dlačice spet zrastejo na 4–5 mm. Redni termini so ključni, da dlačice rastejo enakomerno in da je vsaka naslednja depilacija hitrejša in manj neprijetna.',
     },
     {
       q: 'Koliko stane depilacija na Vrhniki?',
-      a: 'Depilacija celih nog stane 30 €, nog do kolen 20 €, rok 20 €, pazduh 12 € in obraza 10 €. Predele lahko združiš na enem terminu. Plačilo je z gotovino.',
+      a: 'Depilacija celih nog stane 30 €, nog do kolen 20 €, rok 20 €, pazduh 12 € in obraza 10 €. Predele lahko združiš na enem terminu. Plačilo je z gotovino.',
     },
     {
       q: 'Depilacija z voskom ali britje, kaj je bolje?',
-      a: 'Britje odstrani dlačico na površini, zato se pojavijo že po dnevu ali dveh, pogosto s strniščem in razdraženo kožo. Vosek dlačico izpuli z mešičkom, koža je gladka več tednov, dlačice pa s časom rastejo tanjše in redkejše.',
+      a: 'Britje odstrani dlačico na površini, zato se pojavijo že po dnevu ali dveh, pogosto z razdraženo kožo. Vosek dlačico izpuli z mešičkom, koža je gladka več tednov, dlačice pa s časom rastejo tanjše in redkejše.',
     },
   ],
 };

@@ -24,7 +24,7 @@ export const pedikura: Service = {
       'Estetska pedikura na Vrhniki: urejena kožica, oblikovani nohti, trajni lak ali francoska. Cenik: pedikura 35 €, s trajnim lakom 40 €. Adna Cosmetics.',
   },
   published: '2026-09-15',
-  modified: '2026-09-16',
+  modified: '2026-09-17',
   labels: {
     more: 'Več o pedikuri',
     overview: 'Kaj vključuje pedikura?',
@@ -51,7 +51,7 @@ export const pedikura: Service = {
       id: 'estetska-pedikura',
       title: 'Estetska pedikura',
       summary:
-        'Estetska pedikura je urejanje stopal za lep videz in lahkoten korak: uredim obnohtno kožico, nohte skrajšam in oblikujem ter poskrbim za negovan videz stopal. Primerna je za redno nego in pred sezono odprtih čevljev.',
+        'Estetska pedikura je urejanje stopal za lep videz in lahkoten korak: uredim obnohtno kožico, nohte skrajšam in oblikujem ter poskrbim za negovan videz stopal. Primerna je za redno nego in pred sezono odprtih čevljev. Pomaga pri zgodnjem odkrivanju morebitne problematike stopal.',
       details: [
         'Pedikura je izraz, ki označuje urejanje stopal. Z urejanjem obnohtne kožice ter natančnim krajšanjem in oblikovanjem nohtov poskrbim, da so stopala urejena in nohti lepo oblikovani.',
         'Estetska pedikura stane 35 €. Ni nadomestilo za medicinsko pedikuro: pri zdravstvenih težavah stopal ti svetujem obisk pedikerja.',
@@ -64,8 +64,7 @@ export const pedikura: Service = {
       summary:
         'Stranke, ki se naročijo na pedikuro, si večinoma želijo bolj obstojen in natančno nanesen lak. Trajni lak na nogah se strdi pod lučko, je takoj suh in ohrani sijaj več tednov.',
       details: [
-        'Po urejeni pedikuri nohte pripravim za nanos, nanesem podlago, barvo v tankih plasteh in zaključni sijaj. Izbiraš lahko med številnimi odtenki.',
-        'Pedikura s trajnim lakiranjem stane 40 €. Če prideš s trajnim lakom na nohtih, ga pred pedikuro odstranim; odstranjevanje trajnega laka s pedikuro stane 20 €.',
+        'Po urejeni pedikuri nohte pripravim za nanos, nanesem podlago, barvo v tankih plasteh in zaključni sijaj. Izbiraš lahko med številnimi odtenki. Pedikura s trajnim lakiranjem stane 40 €.',
       ],
     },
     {
@@ -81,12 +80,12 @@ export const pedikura: Service = {
   ],
   process: [
     {
-      title: 'Pregled stopal in posvet',
+      title: 'Pregled in posvet',
       text:
-        'Pogledava stanje nohtov in kože ter se dogovoriva za obliko nohtov in barvo laka. Sporoči mi morebitno občutljivost ali zdravstvene težave stopal.',
+        'Pogledava stanje stopal in nohtov, govoriva o željah in možnostih. Pogovoriva se tudi o morebitnih boleznih ali zdravilih, ki jih stranka lahko jemlje.',
     },
     {
-      title: 'Urejanje kožice in nohtov',
+      title: 'Urejanje nohtov in kožice',
       text:
         'Obnohtno kožico nežno uredim, nohte skrajšam na primerno dolžino in jih oblikujem tako, da se ne vraščajo v kožo.',
     },
@@ -98,7 +97,7 @@ export const pedikura: Service = {
     {
       title: 'Zaključek',
       text:
-        'Stopala negujem in ti svetujem, kako ohraniti rezultat doma. Star trajni lak odstranim na začetku termina (20 € skupaj s pedikuro).',
+        'Stopala negujem in ti svetujem, kako ohraniti rezultat doma. Star trajni lak odstranim na začetku termina in je všteto v ceno.',
     },
   ],
   tips: [
@@ -110,7 +109,7 @@ export const pedikura: Service = {
     {
       title: 'Nega doma',
       text:
-        'Stopala vsak dan namaži z negovalno kremo, nohte pili v ravno obliko in ne reži kožice. Udobna obutev prepreči pritisk na nohte in vraščanje.',
+        'Stopala vsak dan namaži z negovalno kremo, nohte pili v ravno obliko in ne reži kožice. Udobna obutev prepreči pritisk na nohte in vraščanje. Poskrbi, da so tvoji čevlji prave velikosti in da stopala ostajajo suha.',
     },
     {
       title: 'Kako pogosto na pedikuro',
@@ -134,35 +133,11 @@ export const pedikura: Service = {
   faq: [
     {
       q: 'Koliko stane pedikura na Vrhniki?',
-      a: 'Estetska pedikura stane 35 €, pedikura s trajnim lakiranjem 40 €, pedikura s francosko poslikavo 45 €. Odstranjevanje trajnega laka s pedikuro je 20 €. Plačilo je z gotovino.',
+      a: 'Estetska pedikura stane 35 €, pedikura s trajnim lakiranjem 40 €, pedikura s francosko poslikavo 45 €. Odstranjevanje trajnega laka s pedikuro je 20 €. Plačilo je z gotovino.',
     },
     {
       q: 'Kaj vključuje estetska pedikura?',
       a: 'Urejanje obnohtne kožice, krajšanje in oblikovanje nohtov ter nego stopal za lep videz in lahkoten korak. Po želji dodam trajni lak ali francosko poslikavo. Estetska pedikura ne rešuje zdravstvenih težav stopal.',
-    },
-    {
-      q: 'V čem je razlika med estetsko in medicinsko pedikuro?',
-      a: 'Estetska pedikura je nega in lepotno urejanje zdravih stopal. Medicinska pedikura obravnava vraščene nohte, glivice, kurja očesa, otiščance in stopala oseb s sladkorno boleznijo. Če opaziš take težave, se naroči pri medicinskem pedikerju.',
-    },
-    {
-      q: 'Koliko časa zdrži trajni lak na nogah?',
-      a: 'Ker nohti na nogah rastejo počasneje kot na rokah, trajni lak praviloma zdrži več tednov brez krušenja. Obstojnost podaljšaš, če nanosa ne praskaš in stopal ne namažeš s kremo tik pred terminom.',
-    },
-    {
-      q: 'Kako se pripravim na pedikuro?',
-      a: 'Pridi brez laka na nohtih, na dan termina ne nanašaj kreme na stopala. Če imaš trajni lak, ga odstranim jaz. Po pedikuri s trajnim lakom so nohti takoj suhi, zato lahko obuješ običajne čevlje.',
-    },
-    {
-      q: 'Ali lahko na pedikuro pridem s trajnim lakom iz drugega salona?',
-      a: 'Da, star trajni lak odstranim na začetku termina (20 € skupaj s pedikuro). Korekcij tujega dela ne izvajam, zato nohte vedno na novo nalakiram.',
-    },
-    {
-      q: 'Ali pedikura boli?',
-      a: 'Ne. Kožico urejam nežno, nohte pa skrajšam in oblikujem brez pritiska. Če imaš občutljiva stopala, mi to povej, da prilagodim delo.',
-    },
-    {
-      q: 'Kako pogosto naj hodim na pedikuro?',
-      a: 'Za negovana stopala priporočam pedikuro na 4–6 tednov, odvisno od rasti nohtov in tega, ali imaš trajni lak. Pred poletjem in dopustom se termini hitro polnijo, zato se naroči pravočasno.',
     },
   ],
 };

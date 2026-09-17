@@ -32,7 +32,7 @@ export const routes: AppRoute[] = [
   {
     path: '/',
     Component: Home,
-    sitemap: { lastmod: '2026-09-16', changefreq: 'weekly', priority: 1.0 },
+    sitemap: { lastmod: '2026-09-17', changefreq: 'weekly', priority: 1.0 },
   },
   {
     path: '/o-meni',

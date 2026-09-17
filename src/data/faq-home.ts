@@ -1,18 +1,13 @@
 import type { FaqItem } from './services';
 
-/** Splošna vprašanja za domačo stran (naročanje, plačilo, lokacija, priprava). */
+/**
+ * Splošna vprašanja za domačo stran (storitve, naročanje, delovni čas, lokacija, komu je salon namenjen).
+ * Vprašanja o cenah posameznih storitev so na podstraneh storitev (brez podvajanja FAQ med stranmi).
+ */
 export const homeFaqs: FaqItem[] = [
   {
     q: 'Katere storitve ponuja Adna Cosmetics?',
     a: 'Adna Cosmetics je kozmetični salon na Vrhniki, ki ponuja manikuro, pedikuro, lash lift in laminacijo obrvi, depilacijo z voskom ter masažo.',
-  },
-  {
-    q: 'Koliko stane manikura na Vrhniki?',
-    a: 'Osnovna manikura v salonu Adna Cosmetics stane 25 €, podaljševanje nohtov od 35 do 45 €, permanentno (trajno) lakiranje pa 30 €.',
-  },
-  {
-    q: 'Kje lahko na Vrhniki naredim lash lift ali laminacijo obrvi?',
-    a: 'Lash lift in laminacijo obrvi izvajam v salonu Adna Cosmetics na Vrhniki. Lash lift stane 35 €, laminacija obrvi 35 €, kombinacija obojega (duo) pa 60 €.',
   },
   {
     q: 'Kako se naročim v salon Adna Cosmetics?',
@@ -27,15 +22,11 @@ export const homeFaqs: FaqItem[] = [
     a: 'Salon je na Vrhniki. Točen naslov ti posredujem ob potrditvi rezervacije termina.',
   },
   {
-    q: 'Ali v salon prihajajo stranke iz okolice Vrhnike?',
-    a: 'Da, poleg strank z Vrhnike me redno obiskujejo tudi iz Ljubljane, Logatca, Borovnice, Brezovice in drugih okoliških krajev.',
-  },
-  {
     q: 'Ali je za obisk potrebna rezervacija?',
-    a: 'Da, delam izključno po naročilu. Ob odpovedi manj kot 24 ur pred terminom se zaračuna 100 % vrednosti storitve, pri odpovedi 24–48 ur prej pa 50 %.',
+    a: 'Da, delam izključno po naročilu. Ob odpovedi manj kot 24 ur pred terminom se zaračuna 100 % vrednosti storitve, pri odpovedi 24–48 ur prej pa 50 %.',
   },
   {
-    q: 'Koliko traja in stane masaža?',
-    a: 'Klasična masaža telesa traja 60 minut in stane 40 €. Krajša masaža zgornjega hrbta z vratom traja 30 minut in stane 20 €.',
+    q: 'Komu je salon namenjen?',
+    a: 'Salon je namenjen izključno ženskam. Dobrodošla je vsaka, ki si želi malo razvajanja.',
   },
 ];
