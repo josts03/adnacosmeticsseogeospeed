@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AlertCircle, ArrowRight } from 'lucide-react';
 import type { PriceItem } from '../data/services';
+import { CTA_LABEL } from '../data/site';
 
 interface PriceTableProps {
   title: string;
@@ -33,7 +34,7 @@ export function PriceTable({ title, items, note, ctaHref = '/kontakt', more, id 
         ))}
       </div>
       <div className="mt-8 text-center">
-        <Link to={ctaHref} className="inline-block px-8 py-3 bg-brand-dark text-brand-light uppercase tracking-widest text-sm hover:bg-brand-nude transition-colors">Naroči se</Link>
+        <Link to={ctaHref} className="inline-block px-8 py-3 bg-brand-dark text-brand-light uppercase tracking-widest text-sm hover:bg-brand-nude hover:text-brand-dark transition-colors">{CTA_LABEL}</Link>
       </div>
       {note && (
         <p className="text-sm text-brand-taupe italic mt-8 flex items-start">

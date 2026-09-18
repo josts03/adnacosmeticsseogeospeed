@@ -5,7 +5,7 @@ import { SITE_URL } from '../data/site';
 import { buildPageGraph } from '../lib/schema';
 import { Mail, MapPin, Instagram, Clock, CheckCircle } from 'lucide-react';
 import { useState, useRef, useEffect, FormEvent } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { normalizeField } from '../utils/formText';
 
 const TITLE = 'Naroči se | Adna Cosmetics Vrhnika';
@@ -16,7 +16,7 @@ const schema = buildPageGraph({
   path: '/kontakt',
   title: TITLE,
   description: DESCRIPTION,
-  crumbs: [{ name: 'Kontakt', url: `${SITE_URL}/kontakt` }],
+  crumbs: [{ name: 'Naroči se', url: `${SITE_URL}/kontakt` }],
 });
 
 // Storitve iz skupnih podatkov + dve splošni možnosti; value se pošlje na Formspree.
@@ -34,6 +34,18 @@ const CASE_RULES = {
 
 // Človek obrazca ne izpolni v manj kot toliko sekundah, bot pa ga.
 const MIN_FILL_SECONDS = 3;
+
+const FIELD_CLASS =
+  'w-full px-4 py-3 border border-brand-medium bg-white focus:outline-none focus:border-brand-taupe focus:ring-1 focus:ring-brand-taupe transition-colors';
+
+/** Zvezdica ob oznaki obveznega polja; pomen razloži legenda nad obrazcem. */
+function Required() {
+  return (
+    <span className="text-brand-taupe" aria-hidden="true">
+      {' *'}
+    </span>
+  );
+}
 
 export function Contact() {
   const [succeeded, setSucceeded] = useState(false);
@@ -119,16 +131,16 @@ export function Contact() {
     <>
       <SEO title={TITLE} description={DESCRIPTION} path="/kontakt" schema={schema} />
       <PageHeader
-        title="Kontakt"
+        title="Naroči se"
         subtitle="Stopi v stik ali rezerviraj svoj termin v kozmetičnem salonu na Vrhniki."
       />
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
+
           <div className="bg-brand-nude/10 p-8 md:p-12 border border-brand-nude">
             <h2 className="text-3xl font-serif mb-8 text-brand-dark">Informacije</h2>
-            
+
             <div className="space-y-8">
               <div className="flex items-start">
                 <MapPin className="w-6 h-6 text-brand-taupe mr-4 mt-1" />
@@ -185,20 +197,27 @@ export function Contact() {
               </div>
             ) : (
               <form className="space-y-6" onSubmit={handleSubmit}>
+                <p className="text-sm text-brand-dark/70">
+                  Polja z zvezdico (<span className="text-brand-taupe">*</span>) so obvezna.
+                </p>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-brand-dark/80 mb-2">Ime in priimek</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-brand-dark/80 mb-2">
+                    Ime in priimek<Required />
+                  </label>
                   <input
                     type="text"
                     id="name"
                     name="Ime"
                     required
                     autoComplete="name"
-                    className="w-full px-4 py-3 border border-brand-nude bg-brand-light/50 focus:outline-none focus:border-brand-taupe focus:ring-1 focus:ring-brand-taupe transition-colors"
+                    className={FIELD_CLASS}
                     placeholder="Si že lepa, samo vpiši ime 🎀!"
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-brand-dark/80 mb-2">Telefonska številka</label>
+                  <label htmlFor="phone" className="block text-sm font-medium text-brand-dark/80 mb-2">
+                    Telefonska številka<Required />
+                  </label>
                   <input
                     type="tel"
                     id="phone"
@@ -207,20 +226,39 @@ export function Contact() {
                     inputMode="tel"
                     autoComplete="tel"
                     pattern="[0-9+\s\(\)\/\-]{6,20}"
+                    aria-describedby="phone-hint"
                     title="Vnesi veljavno telefonsko številko (npr. 041 123 456)."
-                    className="w-full px-4 py-3 border border-brand-nude bg-brand-light/50 focus:outline-none focus:border-brand-taupe focus:ring-1 focus:ring-brand-taupe transition-colors"
+                    className={FIELD_CLASS}
                     placeholder="041 123 456"
+                  />
+                  <p id="phone-hint" className="mt-2 text-xs text-brand-dark/70">
+                    Na to številko te pokličem ali ti pišem za potrditev termina.
+                  </p>
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-brand-dark/80 mb-2">
+                    E-poštni naslov <span className="text-brand-dark/60">(neobvezno)</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="Email"
+                    autoComplete="email"
+                    className={FIELD_CLASS}
+                    placeholder="ime@primer.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-brand-dark/80 mb-2">Želena storitev</label>
+                  <label htmlFor="service" className="block text-sm font-medium text-brand-dark/80 mb-2">
+                    Želena storitev<Required />
+                  </label>
                   <select
                     id="service"
                     name="Storitev"
                     required
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full px-4 py-3 border border-brand-nude bg-brand-light/50 focus:outline-none focus:border-brand-taupe focus:ring-1 focus:ring-brand-taupe transition-colors"
+                    className={FIELD_CLASS}
                   >
                     <option value="">Izberi storitev</option>
                     {SERVICE_OPTIONS.map((o) => (
@@ -229,12 +267,14 @@ export function Contact() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-brand-dark/80 mb-2">Sporočilo</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-brand-dark/80 mb-2">
+                    Sporočilo <span className="text-brand-dark/60">(neobvezno)</span>
+                  </label>
                   <textarea
                     id="message"
                     name="Sporocilo"
                     rows={4}
-                    className="w-full px-4 py-3 border border-brand-nude bg-brand-light/50 focus:outline-none focus:border-brand-taupe focus:ring-1 focus:ring-brand-taupe transition-colors"
+                    className={FIELD_CLASS}
                     placeholder="Želeni datum in ura, ali druga vprašanja..."
                   ></textarea>
                 </div>
@@ -269,11 +309,15 @@ export function Contact() {
                     rel="noopener noreferrer"
                     className="w-full px-8 py-4 border border-brand-dark text-brand-dark uppercase tracking-widest text-sm hover:bg-brand-dark hover:text-brand-light transition-colors text-center flex items-center justify-center gap-2"
                   >
-                    <Instagram className="w-5 h-5" /> NAROČI SE NA IG
+                    <Instagram className="w-5 h-5" /> Piši mi na Instagramu
                   </a>
                 </div>
-                <p className="text-xs text-brand-dark/50 text-center mt-4">
-                  To je samo informativno povpraševanje. Za potrditev in rezervacijo termina te kontaktiram! :)
+                <p className="text-xs text-brand-dark/70 text-center mt-4">
+                  To je samo informativno povpraševanje. Za potrditev in rezervacijo termina te kontaktiram! :) Podatke uporabim izključno za dogovor o terminu, kot piše v{' '}
+                  <Link to="/politika-zasebnosti" className="underline hover:text-brand-taupe transition-colors">
+                    politiki zasebnosti
+                  </Link>
+                  .
                 </p>
               </form>
             )}

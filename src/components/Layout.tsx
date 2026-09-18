@@ -4,7 +4,7 @@ import { Menu, X, Instagram, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Logo } from './Logo';
 import { services } from '../data/services';
-import { EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from '../data/site';
+import { CTA_LABEL, EMAIL, INSTAGRAM_HANDLE, INSTAGRAM_URL } from '../data/site';
 
 interface LayoutProps {
   children: ReactNode;
@@ -30,10 +30,6 @@ export function Layout({ children }: LayoutProps) {
 
   useEffect(() => {
     setIsMenuOpen(false);
-    // ob navigaciji s sidrom (#storitev) scroll prevzame ciljna stran
-    if (!location.hash) {
-      window.scrollTo(0, 0);
-    }
   }, [location.pathname, location.hash]);
 
   const navLinks = [
@@ -118,19 +114,27 @@ export function Layout({ children }: LayoutProps) {
               to="/kontakt"
               className="px-6 py-2 bg-brand-dark text-brand-light text-sm uppercase tracking-widest hover:bg-brand-taupe transition-colors"
             >
-              Naroči se
+              {CTA_LABEL}
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-brand-dark p-2 -mr-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Zapri meni' : 'Odpri meni'}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobilno: poziv k naročanju je vedno viden, poleg gumba za meni */}
+          <div className="flex items-center gap-1 md:hidden">
+            <Link
+              to="/kontakt"
+              className="px-4 py-2.5 bg-brand-dark text-brand-light text-xs uppercase tracking-widest hover:bg-brand-taupe transition-colors"
+            >
+              {CTA_LABEL}
+            </Link>
+            <button
+              className="text-brand-dark p-2 -mr-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Zapri meni' : 'Odpri meni'}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -177,7 +181,7 @@ export function Layout({ children }: LayoutProps) {
                   location.pathname === '/kontakt' ? 'text-brand-taupe italic' : 'text-brand-dark'
                 }`}
               >
-                Naroči se
+                {CTA_LABEL}
               </Link>
               <div className="mt-auto items-center flex flex-col gap-6 pt-10 border-t border-brand-nude">
                   <a href="mailto:adnaacosmetics@gmail.com" className="flex items-center gap-2">
@@ -195,14 +199,22 @@ export function Layout({ children }: LayoutProps) {
       {/* Main Content */}
       <main className="flex-grow">
         {/* initial={false}: prva stran se ne animira – prerenderan HTML tako nima opacity:0
-            do hidracije (boljši LCP); animira se šele prehod med stranmi. */}
-        <AnimatePresence mode="wait" initial={false}>
+            do hidracije (boljši LCP); animira se šele prehod med stranmi.
+            Skok na vrh počaka na konec izhodne animacije (onExitComplete), sicer stara stran
+            med ugašanjem vidno poskoči; skupno trajanje prehoda je 0,3 s namesto 0,6 s. */}
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => {
+            if (!location.hash) window.scrollTo(0, 0);
+          }}
+        >
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.15 }}
           >
             {children}
           </motion.div>

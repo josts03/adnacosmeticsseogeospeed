@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { EMAIL } from '../data/site';
+import { CTA_LABEL, EMAIL } from '../data/site';
 
 interface CtaSectionProps {
   title?: string;
@@ -13,7 +13,7 @@ export function CtaSection({
   title = 'Pripravljena za spremembo?',
   text = 'Tvoj termin čaka.',
   href = '/kontakt',
-  label = 'Rezerviraj svoj termin →',
+  label = `${CTA_LABEL} →`,
 }: CtaSectionProps) {
   return (
     <section className="py-24 bg-brand-dark text-center">

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
+import { services } from '../data/services';
+import { CTA_LABEL } from '../data/site';
 
 export function NotFound() {
   return (
@@ -27,8 +29,8 @@ export function NotFound() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-brand-dark/60 text-base sm:text-lg leading-relaxed mb-12 max-w-md mx-auto">
-            Izgleda, da povezava, ki jo iščete, ne obstaja več ali pa se je preselila na lepše.
+          <p className="text-brand-dark/70 text-base sm:text-lg leading-relaxed mb-12 max-w-md mx-auto">
+            Izgleda, da povezava, ki jo iščeš, ne obstaja več ali pa se je preselila na lepše.
           </p>
 
           {/* CTA Buttons */}
@@ -47,13 +49,40 @@ export function NotFound() {
             </Link>
           </div>
 
+          {/* Storitve: obiskovalec z napačne povezave pride na pravo podstran v enem kliku */}
+          <nav aria-label="Storitve" className="mt-12 pt-10 border-t border-brand-nude">
+            <p className="text-xs uppercase tracking-[0.2em] text-brand-dark/70 font-semibold mb-5">
+              Morda si iskala
+            </p>
+            <ul className="flex flex-wrap justify-center gap-x-3 gap-y-3">
+              {services.map((service) => (
+                <li key={service.id}>
+                  <Link
+                    to={service.path}
+                    className="inline-block px-4 py-2.5 border border-brand-nude text-sm text-brand-dark hover:border-brand-taupe hover:text-brand-taupe transition-colors"
+                  >
+                    {service.navLabel}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/cenik"
+                  className="inline-block px-4 py-2.5 border border-brand-nude text-sm text-brand-dark hover:border-brand-taupe hover:text-brand-taupe transition-colors"
+                >
+                  Cenik
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
           {/* Tertiary link */}
-          <div className="mt-8">
+          <div className="mt-10">
             <Link
               to="/kontakt"
               className="inline-flex items-center gap-2 text-sm text-brand-taupe hover:text-brand-dark transition-colors uppercase tracking-widest font-semibold"
             >
-              Rezerviraj svoj termin →
+              {CTA_LABEL} →
             </Link>
           </div>
 

@@ -11,6 +11,7 @@ import { FaqSection } from '../components/FaqAccordion';
 import { OtherServices } from '../components/OtherServices';
 import { CtaSection } from '../components/CtaSection';
 import type { Service } from '../data/services';
+import { CTA_LABEL } from '../data/site';
 import { buildServiceGraph } from '../lib/schema';
 import { useScrollToHash } from '../lib/useScrollToHash';
 
@@ -44,7 +45,7 @@ export function ServicePage({ service }: { service: Service }) {
               to={bookingHref}
               className="px-8 py-4 bg-brand-dark text-brand-light uppercase tracking-widest text-sm hover:bg-brand-taupe transition-colors text-center"
             >
-              Rezerviraj termin →
+              {CTA_LABEL} →
             </Link>
             <a
               href="#cenik"

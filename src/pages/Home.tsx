@@ -9,7 +9,7 @@ import { CtaSection } from '../components/CtaSection';
 import { services } from '../data/services';
 import { homeFaqs } from '../data/faq-home';
 import { reviews as initialReviews, reviewStats } from '../data/reviews';
-import { FOUNDER } from '../data/site';
+import { CTA_LABEL, FOUNDER } from '../data/site';
 import { buildHomeGraph } from '../lib/schema';
 
 // FAQ + ocene (AggregateRating/Review) na poslovni entiteti; ocene so vidne samo na tej strani.
@@ -19,6 +19,9 @@ const averageLabel = reviewStats.average.toLocaleString('sl-SI', { minimumFracti
 export function Home() {
   const [reviews, setReviews] = useState(initialReviews);
   const [activeMobileReview, setActiveMobileReview] = useState(0);
+  // Po prvi ročni potezi (puščica, pika, poteg) samodejnega vrtenja ne nadaljujemo,
+  // da se mnenje ne zamenja sredi branja.
+  const [autoPaused, setAutoPaused] = useState(false);
 
   useEffect(() => {
     // Randomize initial array
@@ -27,18 +30,26 @@ export function Home() {
   }, []);
 
   useEffect(() => {
+    if (autoPaused) return;
     const timer = setInterval(() => {
       setActiveMobileReview((prev) => (prev + 1) % reviews.length);
     }, 10000);
     return () => clearInterval(timer);
-  }, [reviews.length, activeMobileReview]);
+  }, [reviews.length, activeMobileReview, autoPaused]);
 
   const nextReview = () => {
+    setAutoPaused(true);
     setActiveMobileReview((prev) => (prev + 1) % reviews.length);
   };
 
   const prevReview = () => {
+    setAutoPaused(true);
     setActiveMobileReview((prev) => (prev - 1 + reviews.length) % reviews.length);
+  };
+
+  const showReview = (idx: number) => {
+    setAutoPaused(true);
+    setActiveMobileReview(idx);
   };
 
   return (
@@ -54,7 +65,8 @@ export function Home() {
       <link rel="preload" as="image" href="/backgroundimage.webp" type="image/webp" fetchPriority="high" media="(min-width: 768px)" />
 
       {/* Hero Section */}
-      <section className="relative bg-brand-nude overflow-hidden h-[80vh] flex items-center md:bg-[url('/backgroundimage.webp')] md:bg-cover md:bg-[center_25%] md:bg-no-repeat">
+      {/* min-h namesto h: pri 320 px in pri povečanem besedilu vsebina naraste namesto da se obreže. */}
+      <section className="relative bg-brand-nude overflow-hidden min-h-[80vh] py-16 flex items-center md:bg-[url('/backgroundimage.webp')] md:bg-cover md:bg-[center_25%] md:bg-no-repeat">
         {/* Placeholder background image pattern */}
         <div className="absolute inset-0 opacity-20 bg-[url('/cream-paper.png')] mix-blend-multiply md:hidden"></div>
         <div className="absolute right-0 top-0 w-1/2 h-full bg-brand-rose opacity-20 blur-3xl transform translate-x-1/4 -skew-x-12 md:hidden"></div>
@@ -76,7 +88,7 @@ export function Home() {
                 to="/kontakt"
                 className="px-8 py-4 bg-brand-dark text-brand-light uppercase tracking-widest text-sm hover:bg-brand-taupe transition-colors text-center"
               >
-                Rezerviraj termin →
+                {CTA_LABEL} →
               </Link>
               <Link
                 to="/storitve"
@@ -237,7 +249,7 @@ export function Home() {
               {reviews.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveMobileReview(idx)}
+                  onClick={() => showReview(idx)}
                   className="w-6 h-6 flex items-center justify-center"
                   aria-label={`Mnenje ${idx + 1}`}
                 >
@@ -249,12 +261,8 @@ export function Home() {
 
           {/* Desktop Reviews */}
           <div className="hidden lg:block overflow-hidden py-4 -mx-4 px-4 md:mx-0 md:px-0">
-            <motion.div
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ ease: "linear", duration: 60, repeat: Infinity }}
-              style={{ willChange: "transform" }}
-              className="flex gap-4 md:gap-6 w-max"
-            >
+            {/* CSS animacija namesto motion, da se trak ustavi ob miški in ob fokusu s tipkovnico. */}
+            <div className="reviews-marquee flex gap-4 md:gap-6 w-max">
               {[...reviews, ...reviews].map((review, i) => (
                 <div
                   key={`${review.name}-${i}`}
@@ -279,7 +287,7 @@ export function Home() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

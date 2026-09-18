@@ -1,8 +1,9 @@
 import { SEO } from '../components/SEO';
 import { PageHeader } from '../components/PageHeader';
 import { PriceTable } from '../components/PriceTable';
+import { CtaSection } from '../components/CtaSection';
 import { services } from '../data/services';
-import { OFFERS_ID, SITE_URL } from '../data/site';
+import { OFFERS_ID, PAYMENT_WITH, SITE_URL } from '../data/site';
 import { buildPageGraph } from '../lib/schema';
 import { useScrollToHash } from '../lib/useScrollToHash';
 
@@ -33,17 +34,23 @@ export function Pricelist() {
       />
 
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {services.map((service, index) => (
-            <PriceTable
-              key={service.id}
-              id={service.id}
-              title={`${index + 1}. ${service.name}`}
-              items={service.prices}
-              note={service.priceNote}
-              more={{ href: service.path, label: service.labels.more }}
-            />
-          ))}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Način plačila je pomemben pred obiskom; prej je pisal samo v pogojih poslovanja. */}
+          <p className="mb-14 text-center text-brand-dark/80">
+            Plačilo je mogoče samo {PAYMENT_WITH}, zato pridi temu primerno pripravljena. Cene so v evrih in vključujejo posvet pred storitvijo ter nasvete za nego doma.
+          </p>
+          <div className="space-y-16">
+            {services.map((service, index) => (
+              <PriceTable
+                key={service.id}
+                id={service.id}
+                title={`${index + 1}. ${service.name}`}
+                items={service.prices}
+                note={service.priceNote}
+                more={{ href: service.path, label: service.labels.more }}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -53,11 +60,15 @@ export function Pricelist() {
           <div className="bg-white p-8 md:p-12 border border-brand-rose/20 text-center">
             <h3 className="text-2xl font-serif mb-6 text-brand-dark">Strošek odpovedi rezervacije</h3>
             <div className="space-y-4 text-brand-dark/80">
+              {/* Najprej dobra novica: prej je stran navajala samo kazni. */}
               <p>
-                <strong>Manj kot 24 ur</strong> pred rezervacijo – <span className="text-red-800 font-semibold">100%</span> vrednosti rezervirane storitve.
+                <strong>Več kot 48 ur</strong> pred rezervacijo – <span className="text-green-800 font-semibold">brezplačno</span>. Odpoved in prestavitev termina sta brez stroškov.
               </p>
               <p>
                 <strong>24 – 48 ur</strong> pred rezervacijo – <span className="text-red-800 font-semibold">50%</span> vrednosti rezervirane storitve.
+              </p>
+              <p>
+                <strong>Manj kot 24 ur</strong> pred rezervacijo – <span className="text-red-800 font-semibold">100%</span> vrednosti rezervirane storitve.
               </p>
               <div className="w-16 h-px bg-brand-taupe mx-auto my-6"></div>
               <p className="italic text-sm">Strošek zaračunam ob naslednjem obisku.</p>
@@ -65,6 +76,8 @@ export function Pricelist() {
           </div>
         </div>
       </section>
+
+      <CtaSection text="Izberi storitev in mi piši. Termin ti potrdim osebno." />
     </>
   );
 }

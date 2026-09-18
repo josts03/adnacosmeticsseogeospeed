@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { PageHeader } from '../components/PageHeader';
+import { CtaSection } from '../components/CtaSection';
 import { FOUNDER, FOUNDER_ID, SITE_URL } from '../data/site';
 import { buildPageGraph } from '../lib/schema';
 
@@ -60,7 +62,15 @@ export function About() {
             <div className="prose prose-lg text-brand-dark/80 max-w-none">
               <h3 className="text-2xl font-serif text-brand-dark mt-0 lg:mt-10 mb-4">Kdo sem?</h3>
               <p className="mb-6 leading-relaxed">
-                Ime mi je {FOUNDER.name}, že od majhnega me kozmetika in lepota navdušujeta. V srednji šoli me je želja po delu v kozmetiki popolnoma prevzela in opravila sem prva tečaja za manikuro. Bila sem namreč na srednji šoli, ki s kozmetiko ni imela skupne točke, a sem se po zaključku vpisala na Višjo strokovno šolo za kozmetiko in velnes v Ljubljani. Med srednjo šolo in izobraževanjem na višji šoli sem delala v različnih salonih in si nabrala izkušnje. Te izkušnje so nekaj, kar nosim s seboj in mi pri vsakdanjem delu vsekakor pridejo prav. V preteklem času sem v ponudbo dodala tudi nekaj novih storitev, a vseeno manikura ostaja moja svetla točka in nekaj, na kar se želim osredotočiti tudi v prihodnosti.
+                Ime mi je {FOUNDER.name}, že od majhnega me kozmetika in lepota navdušujeta. V srednji šoli me je želja po delu v kozmetiki popolnoma prevzela in opravila sem prva tečaja za manikuro. Bila sem namreč na srednji šoli, ki s kozmetiko ni imela skupne točke, a sem se po zaključku vpisala na Višjo strokovno šolo za kozmetiko in velnes v Ljubljani. Med srednjo šolo in izobraževanjem na višji šoli sem delala v različnih salonih in si nabrala izkušnje. Te izkušnje so nekaj, kar nosim s seboj in mi pri vsakdanjem delu vsekakor pridejo prav. V preteklem času sem v ponudbo dodala tudi nekaj{' '}
+                <Link to="/storitve" className="underline decoration-brand-taupe/50 underline-offset-4 hover:text-brand-taupe transition-colors">
+                  novih storitev
+                </Link>
+                , a vseeno{' '}
+                <Link to="/manikura-vrhnika" className="underline decoration-brand-taupe/50 underline-offset-4 hover:text-brand-taupe transition-colors">
+                  manikura
+                </Link>{' '}
+                ostaja moja svetla točka in nekaj, na kar se želim osredotočiti tudi v prihodnosti.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
@@ -81,6 +91,8 @@ export function About() {
           </div>
         </div>
       </section>
+
+      <CtaSection title="Se vidiva v salonu?" text="Izberi storitev in mi piši. Termin ti potrdim osebno." />
     </>
   );
 }

@@ -45,3 +45,9 @@ export const FOUNDER = {
   image: '/profilna-slika.webp',
   path: '/o-meni',
 } as const;
+
+/**
+ * Enoten napis za glavni poziv k naročanju (navigacija, hero, podstrani, cenik, 404, CTA sekcija).
+ * Oddaja obrazca ima svoj napis (»Pošlji povpraševanje«), ker je druga akcija.
+ */
+export const CTA_LABEL = 'Naroči se';
